@@ -3,162 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Food Land Restaurant - Green Dining Experience</title>
+    <title>The Food Land Restaurant</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
         }
         
         body {
-            background-image: url('https://i.pinimg.com/736x/dd/b8/2c/ddb82c508de77ab245fe112c6518653a.jpg');
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            background: url('https://i.pinimg.com/736x/dd/b8/2c/ddb82c508de77ab245fe112c6518653a.jpg') no-repeat center center fixed;
             background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            color: #fff;
+            position: relative;
         }
         
-        .overlay {
-            background-color: rgba(0, 80, 0, 0.85);
-            min-height: 100vh;
-        }
-        
-        header {
-            padding: 20px 0;
-            text-align: center;
-            background-color: rgba(0, 60, 0, 0.9);
-        }
-        
-        .logo {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            margin-bottom: 10px;
-        }
-        
-        .tagline {
-            font-style: italic;
-            color: #aaffaa;
-        }
-        
-        nav {
-            background-color: rgba(0, 100, 0, 0.9);
-            padding: 15px 0;
-        }
-        
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin: 0 20px;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: #aaffaa;
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: -1;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 0 20px;
         }
         
-        .hero {
+        /* Animation Section */
+        .intro-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeOut 3s forwards 3s;
+        }
+        
+        .logo-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #d4af37;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+        }
+        
+        .logo-circle img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .welcome-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #d4af37;
             text-align: center;
-            padding: 60px 0;
+            opacity: 0;
+            animation: fadeIn 2s forwards 1s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; visibility: hidden; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Header */
+        header {
+            padding: 20px 0;
+            position: relative;
+            z-index: 10;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #d4af37;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+            z-index: 5;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
             margin-bottom: 20px;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: #d4af37;
         }
         
         .hero p {
             font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            color: #e0ffe0;
+            max-width: 600px;
+            margin-bottom: 30px;
+            line-height: 1.6;
         }
         
         .btn {
             display: inline-block;
-            background-color: #006400;
-            color: white;
+            background-color: #d4af37;
+            color: #000;
             padding: 12px 30px;
             border-radius: 30px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
             transition: all 0.3s;
-            border: 2px solid #004d00;
+            border: 2px solid #d4af37;
         }
         
         .btn:hover {
-            background-color: #008000;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background-color: transparent;
+            color: #d4af37;
         }
         
+        .btn-outline {
+            background-color: transparent;
+            color: #d4af37;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background-color: #d4af37;
+            color: #000;
+        }
+        
+        /* Menu Section */
         .section {
-            padding: 60px 0;
+            padding: 80px 0;
         }
         
         .section-title {
             text-align: center;
+            margin-bottom: 50px;
+            font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #aaffaa;
+            color: #d4af37;
         }
         
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .menu-items {
+        .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
         }
         
         .menu-item {
-            background-color: rgba(0, 80, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s;
         }
         
@@ -176,287 +230,365 @@
             padding: 20px;
         }
         
-        .menu-item-title {
+        .menu-item h3 {
+            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             margin-bottom: 10px;
-            color: #aaffaa;
+            color: #d4af37;
         }
         
-        .menu-item-price {
-            font-weight: bold;
-            color: #fff;
+        .menu-item p {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+        
+        .price {
+            font-weight: 600;
+            color: #d4af37;
             font-size: 1.2rem;
-            margin-bottom: 15px;
         }
         
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .contact-card {
-            background-color: rgba(0, 80, 0, 0.8);
-            padding: 30px;
-            border-radius: 10px;
+        .view-full-menu {
             text-align: center;
+            margin-top: 50px;
         }
         
-        .contact-card i {
-            font-size: 2rem;
+        /* Reservation Section */
+        .reservation {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 80px 0;
+        }
+        
+        .reservation-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .form-group {
             margin-bottom: 20px;
-            color: #aaffaa;
         }
         
-        .contact-card h3 {
-            margin-bottom: 15px;
-            font-size: 1.5rem;
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
         
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+        
+        /* Map Section */
         .map-container {
-            margin-top: 40px;
+            margin-top: 50px;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
         
+        iframe {
+            width: 100%;
+            display: block;
+        }
+        
+        /* Footer */
         footer {
-            background-color: rgba(0, 60, 0, 0.9);
-            padding: 30px 0;
+            background-color: #000;
+            padding: 50px 0 20px;
             text-align: center;
         }
         
-        .social-links {
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
             margin-bottom: 20px;
         }
         
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0 10px;
-            transition: color 0.3s;
+        .footer-logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid #d4af37;
+            margin-right: 15px;
+            overflow: hidden;
         }
         
-        .social-links a:hover {
-            color: #aaffaa;
+        .footer-logo-img img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .footer-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #d4af37;
+        }
+        
+        .footer-contact h3,
+        .footer-hours h3 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-contact p,
+        .footer-hours p {
+            margin-bottom: 8px;
+            color: #ccc;
         }
         
         .copyright {
-            color: #aaffaa;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            color: #777;
+            font-size: 0.9rem;
         }
         
+        /* Responsive */
         @media (max-width: 768px) {
-            .about-content {
-                flex-direction: column;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav ul li {
-                margin: 10px 0;
+            .nav-links {
+                display: none;
             }
             
             .hero h1 {
                 font-size: 2.5rem;
             }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-logo {
+                justify-content: center;
+                margin-bottom: 30px;
+            }
+            
+            .footer-contact,
+            .footer-hours {
+                margin-bottom: 30px;
+                width: 100%;
+            }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="overlay">
-        <header>
-            <div class="logo">The Food Land</div>
-            <div class="tagline">Eat Green, Live Green</div>
-        </header>
-        
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#reservations">Reservations</a></li>
-            </ul>
-        </nav>
-        
-        <section id="home" class="hero">
-            <div class="container">
-                <h1>Welcome to The Food Land</h1>
-                <p>Experience the finest green dining in Nagpur with our eco-friendly restaurant serving organic, locally-sourced ingredients in a sustainable environment.</p>
-                <a href="#menu" class="btn">View Our Menu</a>
-                <a href="#reservations" class="btn" style="margin-left: 15px;">Book a Table</a>
+    <!-- Intro Animation -->
+    <div class="intro-animation">
+        <div class="logo-circle">
+            <img src="foodland_logo.png" alt="The Food Land Restaurant Logo">
+        </div>
+        <h1 class="welcome-text">Welcome to The Food Land Restaurant</h1>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">The Food Land</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#reservation">Reservations</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Experience Culinary Excellence</h1>
+            <p>At The Food Land Restaurant, we blend traditional recipes with modern techniques to create unforgettable dining experiences. Our passion for food is reflected in every dish we serve.</p>
+            <div>
+                <a href="#reservation" class="btn">Reserve a Table</a>
+                <a href="#menu" class="btn btn-outline">View Menu</a>
             </div>
-        </section>
-        
-        <section id="about" class="section">
-            <div class="container">
-                <h2 class="section-title">About Our Green Restaurant</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>Founded in 2010, The Food Land has been at the forefront of sustainable dining in Nagpur. We believe in serving delicious food while respecting our planet.</p>
-                        <p>Our restaurant features:</p>
-                        <ul style="margin: 20px 0 20px 20px;">
-                            <li>100% organic ingredients from local farmers</li>
-                            <li>Zero-waste kitchen practices</li>
-                            <li>Solar-powered cooking facilities</li>
-                            <li>Compostable packaging for takeaways</li>
-                            <li>Water conservation systems</li>
-                        </ul>
-                        <p>Our chefs combine traditional recipes with modern techniques to create dishes that are both delicious and environmentally responsible.</p>
-                    </div>
-                    <div class="about-image">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Restaurant Interior">
+        </div>
+    </section>
+    
+    <!-- Menu Section -->
+    <section class="section" id="menu">
+        <div class="container">
+            <h2 class="section-title">Our Specialties</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Signature Dish">
+                    <div class="menu-item-content">
+                        <h3>Signature Platter</h3>
+                        <p>A delightful combination of our chef's special creations, featuring the best of local and international flavors.</p>
+                        <span class="price">₹850</span>
                     </div>
                 </div>
-            </div>
-        </section>
-        
-        <section id="menu" class="section" style="background-color: rgba(0, 60, 0, 0.7);">
-            <div class="container">
-                <h2 class="section-title">Our Green Menu</h2>
-                <p style="text-align: center; margin-bottom: 40px; font-size: 1.2rem;">All dishes made with organic, locally-sourced ingredients</p>
-                
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Organic Salad">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Farm Fresh Salad</h3>
-                            <div class="menu-item-price">₹220</div>
-                            <p>Mixed greens, cherry tomatoes, cucumber, carrots, and our house-made organic dressing.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Vegetable Curry">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Seasonal Vegetable Curry</h3>
-                            <div class="menu-item-price">₹280</div>
-                            <p>Fresh seasonal vegetables in a coconut milk and spice curry, served with brown rice.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Avocado Toast">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Avocado Multigrain Toast</h3>
-                            <div class="menu-item-price">₹250</div>
-                            <p>Smashed avocado on artisan multigrain bread with microgreens and hemp seeds.</p>
-                        </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Vegetarian Delight">
+                    <div class="menu-item-content">
+                        <h3>Vegetarian Delight</h3>
+                        <p>Fresh seasonal vegetables prepared with aromatic spices and served with homemade bread.</p>
+                        <span class="price">₹650</span>
                     </div>
                 </div>
-                
-                <div style="text-align: center; margin-top: 40px;">
-                    <a href="#" class="btn">View Full Menu</a>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Seafood Special">
+                    <div class="menu-item-content">
+                        <h3>Ocean's Bounty</h3>
+                        <p>Fresh catch of the day prepared with our signature marinade and served with lemon butter sauce.</p>
+                        <span class="price">₹950</span>
+                    </div>
                 </div>
             </div>
-        </section>
-        
-        <section id="contact" class="section">
-            <div class="container">
-                <h2 class="section-title">Visit Us</h2>
-                
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h3>Address</h3>
-                        <p>The Food Land Family Restaurant<br>
-                        Wardha Rd, near Delhi Darbar,<br>
-                        Chinch Bhawan, Nagpur,<br>
-                        Maharashtra 440015</p>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <i class="fas fa-phone"></i>
-                        <h3>Phone</h3>
-                        <p>8788798101</p>
-                        <p>For reservations: 9876543210</p>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <i class="fas fa-clock"></i>
-                        <h3>Opening Hours</h3>
-                        <p>Monday - Friday: 11am - 11pm</p>
-                        <p>Saturday - Sunday: 10am - 11pm</p>
-                    </div>
-                </div>
-                
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6544.584389931775!2d79.0554515!3d21.0670163!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bf8e927c6c11%3A0xbc765687f9fb4ab3!2sThe%20Food%20Land%20Family%20Garden%20Restaurant!5e1!3m2!1sen!2sin!4v1748252968411!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+            <div class="view-full-menu">
+                <a href="#" class="btn">View Full Menu</a>
             </div>
-        </section>
-        
-        <section id="reservations" class="section" style="background-color: rgba(0, 60, 0, 0.7);">
-            <div class="container">
-                <h2 class="section-title">Make a Reservation</h2>
-                
-                <form style="max-width: 600px; margin: 0 auto;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-                        <div>
-                            <label for="name" style="display: block; margin-bottom: 5px;">Name</label>
-                            <input type="text" id="name" style="width: 100%; padding: 10px; border-radius: 5px; border: none;">
-                        </div>
-                        <div>
-                            <label for="phone" style="display: block; margin-bottom: 5px;">Phone</label>
-                            <input type="tel" id="phone" style="width: 100%; padding: 10px; border-radius: 5px; border: none;">
-                        </div>
+        </div>
+    </section>
+    
+    <!-- Reservation Section -->
+    <section class="section reservation" id="reservation">
+        <div class="container">
+            <h2 class="section-title">Book a Table</h2>
+            <div class="reservation-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
                     </div>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-                        <div>
-                            <label for="date" style="display: block; margin-bottom: 5px;">Date</label>
-                            <input type="date" id="date" style="width: 100%; padding: 10px; border-radius: 5px; border: none;">
-                        </div>
-                        <div>
-                            <label for="time" style="display: block; margin-bottom: 5px;">Time</label>
-                            <input type="time" id="time" style="width: 100%; padding: 10px; border-radius: 5px; border: none;">
-                        </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
                     </div>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <label for="guests" style="display: block; margin-bottom: 5px;">Number of Guests</label>
-                        <select id="guests" style="width: 100%; padding: 10px; border-radius: 5px; border: none;">
-                            <option value="1">1 person</option>
-                            <option value="2">2 people</option>
-                            <option value="3">3 people</option>
-                            <option value="4">4 people</option>
-                            <option value="5">5 people</option>
-                            <option value="6">6 people</option>
-                            <option value="7">7 people</option>
-                            <option value="8">8 people</option>
-                            <option value="9">9+ people</option>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Time</label>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Number of Guests</label>
+                        <select id="guests" name="guests" required>
+                            <option value="1">1 Person</option>
+                            <option value="2">2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5">5 People</option>
+                            <option value="6">6 People</option>
+                            <option value="7">7 People</option>
+                            <option value="8">8+ People</option>
                         </select>
                     </div>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <label for="special-requests" style="display: block; margin-bottom: 5px;">Special Requests</label>
-                        <textarea id="special-requests" rows="4" style="width: 100%; padding: 10px; border-radius: 5px; border: none;"></textarea>
+                    <div class="form-group">
+                        <label for="special-requests">Special Requests</label>
+                        <textarea id="special-requests" name="special-requests" rows="4"></textarea>
                     </div>
-                    
-                    <button type="submit" class="btn" style="width: 100%; padding: 15px; font-size: 1.1rem;">Book Table</button>
+                    <button type="submit" class="btn">Book Now</button>
                 </form>
             </div>
-        </section>
-        
-        <footer>
-            <div class="container">
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+        </div>
+    </section>
+    
+    <!-- Map Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Find Us</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6544.584389931775!2d79.0554515!3d21.0670163!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bf8e927c6c11%3A0xbc765687f9fb4ab3!2sThe%20Food%20Land%20Family%20Garden%20Restaurant!5e1!3m2!1sen!2sin!4v1748252968411!5m2!1sen!2sin" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-img">
+                        <img src="logo.png" alt="The Food Land Restaurant Logo">
+                    </div>
+                    <div class="footer-logo-text">The Food Land</div>
                 </div>
-                <div class="copyright">
-                    &copy; 2023 The Food Land Restaurant. All Rights Reserved.<br>
-                    Eat Green, Live Green.
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>Wardha Rd, near Delhi Darbar, Chinch Bhawan, Nagpur, Maharashtra 440015</p>
+                    <p>Phone: 8788798101</p>
+                    <p>Email: info@foodlandrestaurant.com</p>
+                </div>
+                <div class="footer-hours">
+                    <h3>Opening Hours</h3>
+                    <p>Monday - Friday: 11:00 AM - 11:00 PM</p>
+                    <p>Saturday - Sunday: 10:00 AM - 12:00 AM</p>
                 </div>
             </div>
-        </footer>
-    </div>
+            <div class="copyright">
+                &copy; 2023 The Food Land Restaurant. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple form submission handler
+        document.querySelector('.reservation-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your reservation! We will contact you shortly to confirm.');
+            this.reset();
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
