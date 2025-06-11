@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatrapati Builders & Developers | Premium Plots & Land Parcels</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a3e72;
+            --secondary: #d4af37;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        /* 3D Navigation */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, #0d2b5a 100%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform-style: preserve-3d;
+            transform: translateZ(50px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .navbar-brand span {
+            color: var(--secondary);
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section with 3D Effect */
+        .hero {
+            background: linear-gradient(rgba(26, 62, 114, 0.8), rgba(26, 62, 114, 0.8)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('https://i.imgur.com/7X6wX9x.png') repeat-x;
+            background-size: contain;
+            transform: rotate(180deg);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            transform: translateZ(30px);
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn-gold {
+            background-color: var(--secondary);
+            color: var(--dark);
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+        }
+        
+        .btn-gold:hover {
+            background-color: #c9a227;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 3D Card Styles */
+        .card-3d {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            overflow: hidden;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            margin-bottom: 30px;
+        }
+        
+        .card-3d:hover {
+            transform: translateY(-10px) perspective(1000px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .card-title {
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .badge-location {
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .price {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 2.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .feature-box {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            transition: all 0.3s;
+            margin-bottom: 30px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-box h3 {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Virtual Tour Section */
+        .virtual-tour {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            position: relative;
+        }
+        
+        .tour-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            height: 500px;
+        }
+        
+        .tour-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+        }
+        
+        /* Valuation Tool */
+        .valuation {
+            background-color: var(--primary);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .valuation::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('https://i.imgur.com/7X6wX9x.png') repeat-x;
+            background-size: contain;
+            z-index: 1;
+        }
+        
+        .valuation-form {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-control {
+            height: 50px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '\201C';
+            font-size: 5rem;
+            color: rgba(212, 175, 55, 0.1);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .client-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 3px solid var(--secondary);
+        }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--primary) 0%, #0d2b5a 100%);
+            color: white;
+            padding: 80px 0 30px;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('https://i.imgur.com/7X6wX9x.png') repeat-x;
+            background-size: contain;
+            transform: rotate(180deg);
+            z-index: 1;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-logo span {
+            color: var(--secondary);
+        }
+        
+        .footer-links h5 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">CHATRAPATI <span>BUILDERS</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#properties">Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#valuation">Valuation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Dream Plot Awaits</h1>
+                <p>Discover premium residential and commercial plots in prime locations with unmatched development potential and investment returns.</p>
+                <a href="#properties" class="btn btn-gold btn-lg">Explore Properties</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section id="properties" class="py-5">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Plots</h2>
+            </div>
+            <div class="row">
+                <!-- Property 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-3d">
+                        <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="card-img-top" alt="Luxury Plot">
+                        <div class="card-body">
+                            <span class="badge-location">Pune, Maharashtra</span>
+                            <h5 class="card-title">Luxury Residential Plots</h5>
+                            <p class="card-text">Premium gated community with all modern amenities and 24/7 security.</p>
+                            <div class="price">₹2.5 Cr - ₹4.5 Cr</div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="fas fa-ruler-combined"></i> 2400 - 5000 sq.ft</span>
+                                <span><i class="fas fa-map-marker-alt"></i> 12 Plots Left</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-3d">
+                        <img src="https://images.unsplash.com/photo-1605146769289-440113cc3d00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="card-img-top" alt="Commercial Plot">
+                        <div class="card-body">
+                            <span class="badge-location">Mumbai, Maharashtra</span>
+                            <h5 class="card-title">Commercial Plots</h5>
+                            <p class="card-text">Prime commercial land with excellent road connectivity and high ROI potential.</p>
+                            <div class="price">₹5 Cr - ₹12 Cr</div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="fas fa-ruler-combined"></i> 5000 - 15000 sq.ft</span>
+                                <span><i class="fas fa-map-marker-alt"></i> 5 Plots Left</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-3d">
+                        <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="card-img-top" alt="Farmhouse Plot">
+                        <div class="card-body">
+                            <span class="badge-location">Lonavala, Maharashtra</span>
+                            <h5 class="card-title">Farmhouse Plots</h5>
+                            <p class="card-text">Serene locations perfect for weekend getaways with natural surroundings.</p>
+                            <div class="price">₹75 Lac - ₹2 Cr</div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="fas fa-ruler-combined"></i> 1 Acre - 3 Acres</span>
+                                <span><i class="fas fa-map-marker-alt"></i> 8 Plots Left</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-gold">View All Properties</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Chatrapati Builders</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Clear Titles</h3>
+                        <p>100% legal and dispute-free plots with all necessary approvals and documentation.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>High ROI</h3>
+                        <p>Strategic locations selected for maximum appreciation and investment returns.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Transparent Deals</h3>
+                        <p>No hidden charges with complete transparency in all transactions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3>Prime Locations</h3>
+                        <p>Plots in developing areas with excellent future growth potential.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Development Support</h3>
+                        <p>Architectural guidance and contractor referrals for your construction needs.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>Secure Payments</h3>
+                        <p>Blockchain-enabled escrow services for safe and secure transactions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Tour Section -->
+    <section class="virtual-tour">
+        <div class="container">
+            <div class="section-title">
+                <h2>Explore Our Developments</h2>
+            </div>
+            <div class="tour-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!4v1620000000000!6m8!1m7!1sCAoSLEFGMVFpcE5fVHhKZ19fYjZQN0lVd0J5eG1sR3B2VW5zV0h4d2FQeWJmZzVn!2m2!1d18.5204!2d73.8567!3f0!4f0!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <div class="tour-overlay">
+                    <h3>Royal Gardens, Pune</h3>
+                    <p>Take a virtual tour of our premium residential plot development</p>
+                    <button class="btn btn-gold">Launch 3D Tour</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valuation Tool -->
+    <section id="valuation" class="valuation">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">AI-Powered Plot Valuation</h2>
+                    <p class="mb-4">Get an instant estimate of your land's current market value using our advanced valuation tool.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-check-circle mr-2"></i> Instant valuation report</li>
+                        <li class="mb-3"><i class="fas fa-check-circle mr-2"></i> Comparative market analysis</li>
+                        <li class="mb-3"><i class="fas fa-check-circle mr-2"></i> Future appreciation projection</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <div class="valuation-form">
+                        <h4 class="mb-4 text-center">Get Your Plot's Value</h4>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Location">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Plot Area (sq.ft)">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>Select Plot Type</option>
+                                    <option>Residential</option>
+                                    <option>Commercial</option>
+                                    <option>Agricultural</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-gold btn-block">Calculate Value</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p>"Chatrapati Builders helped me find the perfect plot for my dream home. The documentation process was seamless and their team was extremely professional."</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="client-img" alt="Client">
+                            <div>
+                                <h5>Rajesh Mehta</h5>
+                                <p>Plot Owner, Pune</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p>"I invested in a commercial plot through Chatrapati Builders three years ago. The value has already doubled! Their market insights are invaluable."</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="client-img" alt="Client">
+                            <div>
+                                <h5>Priya Sharma</h5>
+                                <p>Investor, Mumbai</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p>"The legal support and transparency in transactions made buying my farmhouse plot completely hassle-free. Highly recommended for NRIs like me."</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" class="client-img" alt="Client">
+                            <div>
+                                <h5>Vikram Patel</h5>
+                                <p>NRI Investor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">About Chatrapati Builders</h2>
+                    <p class="lead">Trusted name in real estate development since 1995.</p>
+                    <p>With over 25 years of experience, Chatrapati Builders has established itself as a premier land development company in Maharashtra. We specialize in identifying and developing high-potential land parcels that offer exceptional value to our clients.</p>
+                    <p>Our team of experts combines local market knowledge with global best practices to deliver plots that appreciate consistently and provide excellent returns on investment.</p>
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            <h3>2500+</h3>
+                            <p>Happy Clients</p>
+                        </div>
+                        <div class="col-6">
+                            <h3>75+</h3>
+                            <p>Developments</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="img-fluid rounded shadow" alt="About Us">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card-3d">
+                        <div class="card-body">
+                            <h3 class="card-title mb-4">Get in Touch</h3>
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Your Name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Your Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" placeholder="Phone Number">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-gold btn-block">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card-3d h-100">
+                        <div class="card-body">
+                            <h3 class="card-title mb-4">Our Offices</h3>
+                            <div class="mb-4">
+                                <h5>Pune Headquarters</h5>
+                                <p><i class="fas fa-map-marker-alt mr-2"></i> 12, Chatrapati Towers, Bund Garden Road, Pune - 411001</p>
+                                <p><i class="fas fa-phone mr-2"></i> +91 20 12345678</p>
+                            </div>
+                            <div class="mb-4">
+                                <h5>Mumbai Office</h5>
+                                <p><i class="fas fa-map-marker-alt mr-2"></i> 45, Chatrapati Plaza, Bandra Kurla Complex, Mumbai - 400051</p>
+                                <p><i class="fas fa-phone mr-2"></i> +91 22 87654321</p>
+                            </div>
+                            <div class="mb-4">
+                                <h5>Email</h5>
+                                <p><i class="fas fa-envelope mr-2"></i> info@chatrapatibuilders.com</p>
+                            </div>
+                            <div>
+                                <h5>Business Hours</h5>
+                                <p><i class="fas fa-clock mr-2"></i> Monday - Saturday: 9:00 AM - 7:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="footer-logo">CHATRAPATI <span>BUILDERS</span></div>
+                    <p class="mb-4">Creating landmark developments that stand the test of time. Your trusted partner in premium plot investments.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#properties">Properties</a></li>
+                            <li><a href="#valuation">Valuation</a></li>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Properties</h5>
+                        <ul>
+                            <li><a href="#">Residential Plots</a></li>
+                            <li><a href="#">Commercial Land</a></li>
+                            <li><a href="#">Farmhouse Plots</a></li>
+                            <li><a href="#">Gated Communities</a></li>
+                            <li><a href="#">Investment Opportunities</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-links">
+                        <h5>Legal</h5>
+                        <ul>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Refund Policy</a></li>
+                            <li><a href="#">Disclaimer</a></li>
+                            <li><a href="#">RERA Registration</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Chatrapati Builders & Developers. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add shadow to navbar on scroll
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
+            } else {
+                document.querySelector('.navbar').style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
+            }
+        });
+    </script>
+</body>
+</html>
