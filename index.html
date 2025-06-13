@@ -3,18 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Chatrapati Builders & Developers - Premier land development and property solutions">
-    <meta name="keywords" content="land for sale, property development, real estate, agricultural land, residential plots">
-    <title>Chatrapati Builders & Developers | Premium Land Solutions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Chatrapati Builders & Developers | Premium Construction Services</title>
+    <meta name="description" content="Chatrapati Builders & Developers - Award-winning construction company specializing in luxury homes, commercial projects, and sustainable building solutions.">
+    <meta name="keywords" content="construction, builders, developers, real estate, home builders, commercial construction, renovation">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
     <style>
+        /* Pre-loader Animation */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #2c3e50;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .preloader.fade-out {
+            opacity: 0;
+        }
+        
+        .preloader-logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+        
+        .welcome-text {
+            color: white;
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+        
+        .welcome-text span {
+            color: #e67e22;
+        }
+        
+        .loading-bar {
+            width: 200px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+        
+        .loading-progress {
+            height: 100%;
+            width: 0;
+            background-color: #e67e22;
+            animation: loading 3s ease-in-out forwards;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes loading {
+            to { width: 100%; }
+        }
+        
+        /* Reset & Base Styles */
         :root {
-            --primary: #1a3a6e;
-            --secondary: #e3a806;
-            --light: #f8f9fa;
-            --dark: #343a40;
-            --success: #28a745;
+            --primary: #e67e22;
+            --primary-dark: #d35400;
+            --secondary: #2c3e50;
+            --light: #ecf0f1;
+            --dark: #34495e;
+            --white: #ffffff;
+            --black: #222222;
+            --gray: #95a5a6;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
         
         * {
@@ -23,33 +116,141 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
         
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 1.5rem;
         }
         
-        /* Header Styles */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .section {
+            padding: 6rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--gray);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+        
+        /* Header & Navigation */
+        .header {
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
+            transition: var(--transition);
+            padding: 1rem 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
-        .header-container {
+        .header.scrolled {
+            padding: 0.5rem 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
         }
         
         .logo {
@@ -59,798 +260,1399 @@
         
         .logo img {
             height: 50px;
-            margin-right: 10px;
+            margin-right: 0.5rem;
         }
         
-        .logo-text h1 {
-            font-size: 24px;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .logo-text p {
-            font-size: 12px;
-            color: var(--dark);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 20px;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--secondary);
         }
         
-        .cta-button {
-            background-color: var(--secondary);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 4px;
-            font-weight: 600;
+        .logo-text span {
+            color: var(--primary);
         }
         
-        .cta-button:hover {
-            background-color: #d39e00;
-            color: white;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            cursor: pointer;
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa') no-repeat center center/cover;
-            height: 80vh;
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.pinimg.com/736x/3e/99/ef/3e99efddd91a35b408a114fc50174c37.jpg') no-repeat center center/cover;
             display: flex;
             align-items: center;
+            color: var(--white);
             text-align: center;
-            color: white;
+            position: relative;
         }
         
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            padding: 0 1.5rem;
         }
         
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease;
         }
         
         .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
         }
         
-        .search-bar {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
+        .hero-btns {
             display: flex;
-            max-width: 800px;
-            margin: 0 auto;
+            justify-content: center;
+            gap: 1rem;
+            animation: fadeInUp 1s ease 0.6s forwards;
+            opacity: 0;
         }
         
-        .search-bar input, .search-bar select {
-            flex: 1;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin-right: 10px;
-        }
-        
-        .search-bar button {
-            background-color: var(--secondary);
-            color: white;
-            border: none;
-            padding: 0 25px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-        
-        /* Featured Properties */
-        .section-title {
-            text-align: center;
-            margin: 60px 0 30px;
-        }
-        
-        .section-title h2 {
-            font-size: 36px;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .section-title p {
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .properties-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-        
-        .property-card {
-            border: 1px solid #eee;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .property-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .property-image {
-            height: 250px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .property-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .property-card:hover .property-image img {
-            transform: scale(1.05);
-        }
-        
-        .property-badge {
+        .scroll-down {
             position: absolute;
-            top: 15px;
-            left: 15px;
-            background-color: var(--secondary);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: 600;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
         }
         
-        .property-details {
-            padding: 20px;
+        /* About Section */
+        .about {
+            background-color: var(--light);
         }
         
-        .property-details h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-        
-        .property-location {
-            color: #666;
-            margin-bottom: 15px;
-            display: flex;
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
             align-items: center;
         }
         
-        .property-location i {
-            margin-right: 5px;
+        .about-img {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            transition: var(--transition);
+        }
+        
+        .about-img:hover img {
+            transform: scale(1.03);
+        }
+        
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
             color: var(--secondary);
         }
         
-        .property-features {
+        .about-text h2 span {
+            color: var(--primary);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .about-features {
+            margin-top: 2rem;
+        }
+        
+        .feature-item {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .feature {
-            text-align: center;
-        }
-        
-        .feature i {
-            display: block;
-            font-size: 20px;
-            color: var(--secondary);
-            margin-bottom: 5px;
-        }
-        
-        .feature span {
-            font-size: 12px;
-            color: #666;
-        }
-        
-        .property-price {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .property-price span {
-            font-size: 14px;
-            font-weight: 400;
-            color: #666;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-            border: none;
-            cursor: pointer;
-            font-weight: 500;
-        }
-        
-        .btn:hover {
-            background-color: #0d284c;
-            color: white;
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        /* Why Choose Us */
-        .why-us {
-            background-color: #f9f9f9;
-            padding: 80px 0;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .feature-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
         }
         
         .feature-icon {
-            width: 70px;
-            height: 70px;
-            background-color: rgba(227, 168, 6, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 30px;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .feature-text h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
             color: var(--secondary);
         }
         
-        .feature-card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
+        .feature-text p {
+            margin-bottom: 0;
+            color: var(--gray);
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: var(--white);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .service-content p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+        
+        .service-more {
+            display: inline-flex;
+            align-items: center;
             color: var(--primary);
+            font-weight: 500;
         }
         
-        /* Testimonials */
+        .service-more i {
+            margin-left: 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .service-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            background-color: var(--light);
+        }
+        
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 250px;
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(230, 126, 34, 0.8), rgba(211, 84, 0, 0.8));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+        
+        .portfolio-overlay p {
+            color: var(--light);
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover .portfolio-overlay h3,
+        .portfolio-item:hover .portfolio-overlay p {
+            transform: translateY(0);
+        }
+        
+        .portfolio-overlay a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--white);
+            color: var(--primary);
+            border-radius: 4px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .portfolio-overlay a:hover {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+        
+        /* Testimonials Section */
         .testimonials {
-            padding: 80px 0;
+            background-color: var(--white);
+            overflow: hidden;
+            position: relative;
+            padding: 4rem 0;
         }
         
-        .testimonial-slider {
-            margin-top: 40px;
+        .testimonials-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .testimonials-track {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem 0;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-250px * 10 - 2rem * 10)); }
         }
         
         .testimonial-card {
-            background-color: white;
-            padding: 30px;
+            background-color: var(--light);
             border-radius: 8px;
+            padding: 1.5rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin: 0 15px;
+            transition: var(--transition);
+            width: 250px;
+            flex-shrink: 0;
         }
         
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            color: #555;
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
-        .testimonial-author {
+        .testimonial-header {
             display: flex;
             align-items: center;
+            margin-bottom: 1rem;
         }
         
-        .author-avatar {
+        .testimonial-img {
             width: 50px;
             height: 50px;
             border-radius: 50%;
             overflow: hidden;
-            margin-right: 15px;
+            margin-right: 1rem;
+            border: 2px solid var(--primary);
         }
         
-        .author-avatar img {
+        .testimonial-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
         
-        .author-info h4 {
-            font-size: 18px;
-            margin-bottom: 5px;
+        .testimonial-author {
+            flex: 1;
+        }
+        
+        .testimonial-author h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+            color: var(--secondary);
+        }
+        
+        .testimonial-role {
+            font-size: 0.7rem;
+            color: var(--gray);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .testimonial-text::before {
+            content: '"';
+            font-size: 2rem;
             color: var(--primary);
+            opacity: 0.3;
+            position: absolute;
+            left: -0.5rem;
+            top: -1rem;
         }
         
-        .author-info p {
-            color: #666;
-            font-size: 14px;
+        .testimonial-rating {
+            color: var(--warning);
+            font-size: 0.8rem;
         }
         
-        /* Call to Action */
-        .cta-section {
-            background: linear-gradient(rgba(26, 58, 110, 0.9), rgba(26, 58, 110, 0.9)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center center/cover;
-            padding: 80px 0;
-            color: white;
+        /* Pause animation on hover */
+        .testimonials-track:hover {
+            animation-play-state: paused;
+        }
+        
+        /* Gradient fade effect at edges */
+        .testimonials::before,
+        .testimonials::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .testimonials::before {
+            left: 0;
+            background: linear-gradient(to right, var(--white), rgba(255, 255, 255, 0));
+        }
+        
+        .testimonials::after {
+            right: 0;
+            background: linear-gradient(to left, var(--white), rgba(255, 255, 255, 0));
+        }
+        
+        /* Team Section */
+        .team {
+            background-color: var(--light);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-img {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .team-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .team-member:hover .team-img img {
+            transform: scale(1.1);
+        }
+        
+        .team-info {
+            padding: 1.5rem;
             text-align: center;
         }
         
-        .cta-section h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        
-        .cta-section p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            font-size: 18px;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 60px 0 0;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
+        .team-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
             color: var(--secondary);
         }
         
-        .footer-column ul {
-            list-style: none;
+        .team-info p {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 500;
         }
         
-        .footer-column ul li {
-            margin-bottom: 10px;
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
         }
         
-        .footer-column ul li a {
-            color: #bbb;
-            text-decoration: none;
-            transition: color 0.3s;
+        .team-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--light);
+            color: var(--dark);
+            transition: var(--transition);
         }
         
-        .footer-column ul li a:hover {
-            color: white;
+        .team-social a:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/stats-bg.jpg') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-item {
+            padding: 2rem 1rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .stat-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--white);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
         }
         
         .contact-info {
-            margin-bottom: 20px;
+            margin-bottom: 2rem;
         }
         
-        .contact-info p {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            color: #bbb;
-        }
-        
-        .contact-info i {
-            margin-right: 10px;
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
             color: var(--secondary);
         }
         
-        .social-links {
-            display: flex;
-            gap: 15px;
+        .contact-details {
+            margin-bottom: 2rem;
         }
         
-        .social-links a {
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-right: 1rem;
+            margin-top: 0.3rem;
+        }
+        
+        .contact-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: var(--secondary);
+        }
+        
+        .contact-text p, .contact-text a {
+            color: var(--gray);
+        }
+        
+        .contact-text a:hover {
+            color: var(--primary);
+        }
+        
+        .contact-social {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .contact-social a {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            color: white;
-            transition: background-color 0.3s;
+            background-color: var(--light);
+            color: var(--dark);
+            transition: var(--transition);
         }
         
-        .social-links a:hover {
+        .contact-social a:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--secondary);
+        }
+        
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.2);
+        }
+        
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        .footer {
             background-color: var(--secondary);
+            color: var(--light);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-col p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .footer-newsletter input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 4px;
+            margin-bottom: 1rem;
         }
         
         .footer-bottom {
-            background-color: rgba(0, 0, 0, 0.2);
-            padding: 20px 0;
             text-align: center;
-            color: #bbb;
-            font-size: 14px;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
         }
         
         /* Responsive Styles */
         @media (max-width: 992px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
+            .section {
+                padding: 4rem 0;
             }
             
-            nav ul {
-                margin-top: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
+            .section-title h2 {
+                font-size: 2rem;
             }
             
-            nav ul li {
-                margin: 5px 10px;
+            .about-content {
+                grid-template-columns: 1fr;
             }
             
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .search-bar {
-                flex-direction: column;
-                padding: 15px;
-            }
-            
-            .search-bar input, .search-bar select {
-                margin-right: 0;
-                margin-bottom: 10px;
+            .about-img {
+                order: -1;
             }
         }
         
         @media (max-width: 768px) {
-            .section-title h2 {
-                font-size: 30px;
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: var(--transition);
             }
             
-            .property-features {
-                flex-wrap: wrap;
+            .nav-links.active {
+                left: 0;
             }
             
-            .feature {
-                width: 50%;
-                margin-bottom: 10px;
+            .mobile-menu-btn {
+                display: block;
             }
             
-            .cta-section h2 {
-                font-size: 30px;
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .testimonials::before,
+            .testimonials::after {
+                width: 50px;
             }
         }
         
         @media (max-width: 576px) {
-            .logo {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .logo img {
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
-            
-            .hero h1 {
-                font-size: 28px;
-            }
-            
-            .hero p {
-                font-size: 16px;
-            }
-            
-            .properties-grid {
-                grid-template-columns: 1fr;
+            .section {
+                padding: 3rem 0;
             }
             
             .section-title h2 {
-                font-size: 26px;
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .testimonials::before,
+            .testimonials::after {
+                width: 30px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Pre-loader Animation -->
+    <div class="preloader">
+        <img src="assets/logo.png" alt="Chatrapati Builders Logo" class="preloader-logo">
+        <div class="welcome-text">Welcome to <span>Chatrapati Builders</span></div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
     <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <img src="logo.png" alt="Chatrapati Builders & Developers">
-                <div class="logo-text">
-                    <h1>Chatrapati Builders</h1>
-                    <p>Building Dreams, Developing Communities</p>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Properties</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#" class="cta-button">Get Quote</a></li>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <img src="assets/logo.png" alt="Chatrapati Builders Logo">
+                    <span class="logo-text">Chatrapati <span>Builders</span></span>
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Building Dreams, Crafting Realities</h1>
+            <p>Chatrapati Builders & Developers - Your trusted partner for premium construction solutions with over 20 years of excellence in the industry.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary">Get Free Quote</a>
+                <a href="#portfolio" class="btn btn-secondary">Our Projects</a>
+            </div>
+        </div>
+        <a href="#about" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
         <div class="container">
-            <div class="hero-content">
-                <h1>Premium Land Solutions for Your Future</h1>
-                <p>Discover exceptional properties tailored to your residential, commercial, and agricultural needs</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About <span>Chatrapati Builders</span></h2>
+                    <p>Founded in 2003, Chatrapati Builders & Developers has grown from a small local contractor to one of the most respected construction firms in the region. Our commitment to quality, innovation, and customer satisfaction has been the cornerstone of our success.</p>
+                    <p>We specialize in residential, commercial, and industrial construction projects, delivering exceptional results that stand the test of time.</p>
+                    
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h3>Award-Winning Quality</h3>
+                                <p>Recipient of multiple awards for excellence in construction and design.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h3>Experienced Team</h3>
+                                <p>Over 150 skilled professionals dedicated to your project's success.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h3>Sustainable Practices</h3>
+                                <p>Committed to eco-friendly building materials and energy-efficient designs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#services" class="btn btn-primary">Our Services</a>
+                </div>
                 
-                <div class="search-bar">
-                    <input type="text" placeholder="Search by location...">
-                    <select>
-                        <option value="">Property Type</option>
-                        <option value="residential">Residential</option>
-                        <option value="commercial">Commercial</option>
-                        <option value="agricultural">Agricultural</option>
-                    </select>
-                    <select>
-                        <option value="">Price Range</option>
-                        <option value="0-500000">Under ₹5 Lakhs</option>
-                        <option value="500000-1000000">₹5-10 Lakhs</option>
-                        <option value="1000000-5000000">₹10-50 Lakhs</option>
-                        <option value="5000000+">Over ₹50 Lakhs</option>
-                    </select>
-                    <button>Search</button>
+                <div class="about-img">
+                    <img src="https://i.pinimg.com/736x/69/91/a0/6991a06d2c0dfea1f6efa46286d65a81.jpg" alt="Construction Site">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Properties -->
-    <section class="container">
-        <div class="section-title">
-            <h2>Featured Properties</h2>
-            <p>Explore our premium selection of land parcels with clear titles and excellent development potential</p>
-        </div>
-        
-        <div class="properties-grid">
-            <!-- Property 1 -->
-            <div class="property-card">
-                <div class="property-image">
-                    <img src="https://images.unsplash.com/photo-1605146769289-440113cc3d00" alt="Residential Plot in Pune">
-                    <div class="property-badge">Residential</div>
-                </div>
-                <div class="property-details">
-                    <h3>Premium Plot in Pune</h3>
-                    <div class="property-location">
-                        <i class="fas fa-map-marker-alt"></i> Hinjewadi, Pune, Maharashtra
-                    </div>
-                    <div class="property-features">
-                        <div class="feature">
-                            <i class="fas fa-vector-square"></i>
-                            <span>2400 sq.ft</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-road"></i>
-                            <span>30ft Road</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-tint"></i>
-                            <span>Water</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-bolt"></i>
-                            <span>Electricity</span>
-                        </div>
-                    </div>
-                    <div class="property-price">
-                        ₹45,00,000 <span>(Negotiable)</span>
-                    </div>
-                    <a href="#" class="btn">View Details</a>
-                </div>
-            </div>
-            
-            <!-- Property 2 -->
-            <div class="property-card">
-                <div class="property-image">
-                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914" alt="Farm Land in Nashik">
-                    <div class="property-badge">Agricultural</div>
-                </div>
-                <div class="property-details">
-                    <h3>Fertile Farm Land</h3>
-                    <div class="property-location">
-                        <i class="fas fa-map-marker-alt"></i> Nashik, Maharashtra
-                    </div>
-                    <div class="property-features">
-                        <div class="feature">
-                            <i class="fas fa-vector-square"></i>
-                            <span>5 Acres</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-water"></i>
-                            <span>Well</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-tractor"></i>
-                            <span>Access Road</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-tree"></i>
-                            <span>Fruit Trees</span>
-                        </div>
-                    </div>
-                    <div class="property-price">
-                        ₹75,00,000 <span>(All Inclusive)</span>
-                    </div>
-                    <a href="#" class="btn">View Details</a>
-                </div>
-            </div>
-            
-            <!-- Property 3 -->
-            <div class="property-card">
-                <div class="property-image">
-                    <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6" alt="Commercial Plot in Mumbai">
-                    <div class="property-badge">Commercial</div>
-                </div>
-                <div class="property-details">
-                    <h3>Commercial Plot</h3>
-                    <div class="property-location">
-                        <i class="fas fa-map-marker-alt"></i> Thane, Mumbai
-                    </div>
-                    <div class="property-features">
-                        <div class="feature">
-                            <i class="fas fa-vector-square"></i>
-                            <span>5000 sq.ft</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-road"></i>
-                            <span>Highway Front</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-building"></i>
-                            <span>NA Approved</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-chart-line"></i>
-                            <span>High ROI</span>
-                        </div>
-                    </div>
-                    <div class="property-price">
-                        ₹2,50,00,000 <span>(Firm)</span>
-                    </div>
-                    <a href="#" class="btn">View Details</a>
-                </div>
-            </div>
-        </div>
-        
-        <div style="text-align: center; margin-bottom: 60px;">
-            <a href="#" class="btn btn-outline">View All Properties</a>
-        </div>
-    </section>
-
-    <!-- Why Choose Us -->
-    <section class="why-us">
+    <!-- Services Section -->
+    <section class="section services" id="services">
         <div class="container">
             <div class="section-title">
-                <h2>Why Choose Chatrapati Builders</h2>
-                <p>We go beyond just selling land - we provide complete solutions for your property needs</p>
+                <h2>Our Services</h2>
+                <p>We offer comprehensive construction solutions tailored to meet your specific needs and budget requirements.</p>
             </div>
             
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://i.pinimg.com/736x/8e/18/60/8e1860c8a985a3dbf39f2a299d1b8a42.jpg" alt="Residential Construction">
                     </div>
-                    <h3>Verified Titles</h3>
-                    <p>All our properties come with clear, litigation-free titles and complete documentation</p>
+                    <div class="service-content">
+                        <h3>Residential Construction</h3>
+                        <p>From custom luxury homes to affordable housing projects, we build living spaces that reflect your personality and lifestyle.</p>
+                        <a href="#contact" class="service-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-map-marked-alt"></i>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://i.pinimg.com/736x/84/5d/d0/845dd0a1c276d160ab25837d029352fc.jpg" alt="Commercial Construction">
                     </div>
-                    <h3>Prime Locations</h3>
-                    <p>Carefully selected properties in high-growth areas with excellent appreciation potential</p>
+                    <div class="service-content">
+                        <h3>Commercial Construction</h3>
+                        <p>Office buildings, retail spaces, and mixed-use developments designed for functionality and aesthetic appeal.</p>
+                        <a href="#contact" class="service-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-rupee-sign"></i>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://i.pinimg.com/736x/1d/06/14/1d06145d9a1cc00a2b93f9147119acc1.jpg" alt="Renovation & Remodeling">
                     </div>
-                    <h3>Transparent Pricing</h3>
-                    <p>No hidden charges with all costs clearly explained upfront</p>
+                    <div class="service-content">
+                        <h3>Renovation & Remodeling</h3>
+                        <p>Transform your existing space with our expert renovation services that combine creativity with structural integrity.</p>
+                        <a href="#contact" class="service-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-hand-holding-usd"></i>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://i.pinimg.com/736x/2b/76/cc/2b76cc89c6c9553288e83f48495a5357.jpg" alt="Interior Design">
                     </div>
-                    <h3>Flexible Payment</h3>
-                    <p>Customized payment plans to suit your financial situation</p>
+                    <div class="service-content">
+                        <h3>Interior Design</h3>
+                        <p>Complete interior solutions that harmonize space, light, materials and color to create inspiring environments.</p>
+                        <a href="#contact" class="service-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-tie"></i>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://i.pinimg.com/736x/81/fd/f6/81fdf6f40497b7aef13671583f870bb9.jpg" alt="Project Management">
                     </div>
-                    <h3>Expert Guidance</h3>
-                    <p>25+ years experience in land acquisition and development</p>
+                    <div class="service-content">
+                        <h3>Project Management</h3>
+                        <p>Professional oversight of your construction project from conception to completion, ensuring quality and timely delivery.</p>
+                        <a href="#contact" class="service-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://i.pinimg.com/736x/bb/fa/27/bbfa27c100ec4ff8dc22c27ff239e1c0.jpg" alt="Sustainable Building">
                     </div>
-                    <h3>After-Sale Support</h3>
-                    <p>Continued assistance with approvals, utilities, and development</p>
+                    <div class="service-content">
+                        <h3>Sustainable Building</h3>
+                        <p>Green construction practices that reduce environmental impact while enhancing energy efficiency and comfort.</p>
+                        <a href="#contact" class="service-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="testimonials">
+    <!-- Portfolio Section -->
+    <section class="section portfolio" id="portfolio">
         <div class="container">
             <div class="section-title">
-                <h2>What Our Clients Say</h2>
-                <p>Hear from satisfied customers who trusted us with their land investments</p>
+                <h2>Our Portfolio</h2>
+                <p>Explore our completed projects that showcase our craftsmanship, attention to detail, and commitment to excellence.</p>
             </div>
             
-            <div class="testimonial-slider">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "Chatrapati Builders helped me find the perfect plot for my retirement home. Their team was knowledgeable about zoning laws and helped navigate all the paperwork. The title was clear as promised and the location has already appreciated 30% in 2 years."
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="residential">Residential</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+                <button class="filter-btn" data-filter="renovation">Renovation</button>
+                <button class="filter-btn" data-filter="interior">Interior</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="residential">
+                    <img src="https://i.pinimg.com/736x/e6/cb/c6/e6cbc604721f139f9067dfd63ceaf886.jpg" alt="Luxury Villa" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Luxury Villa</h3>
+                        <p>Malabar Hill, Mumbai</p>
+                        <a href="#">View Project</a>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rajesh Mehta">
+                </div>
+                
+                <div class="portfolio-item" data-category="commercial">
+                    <img src="https://i.pinimg.com/736x/46/45/a7/4645a763ebc5d4cb14f84f3f5e04c9c0.jpg" alt="Office Complex" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Office Complex</h3>
+                        <p>Bandra Kurla Complex</p>
+                        <a href="#">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="residential">
+                    <img src="https://i.pinimg.com/736x/00/84/c1/0084c16994d0622c02c60efc120907c5.jpg" alt="Apartment Building" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Apartment Building</h3>
+                        <p>Pune, Maharashtra</p>
+                        <a href="#">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="renovation">
+                    <img src="https://i.pinimg.com/736x/76/f2/9a/76f29a8f5a71dbf154ffd43919bfaf28.jpg" alt="Heritage Restoration" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Heritage Restoration</h3>
+                        <p>Fort, Mumbai</p>
+                        <a href="#">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="interior">
+                    <img src="https://i.pinimg.com/736x/7b/a4/76/7ba47612d36aea2085872384c58bd684.jpg" alt="Penthouse Interior" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Penthouse Interior</h3>
+                        <p>Worli, Mumbai</p>
+                        <a href="#">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="commercial">
+                    <img src="https://i.pinimg.com/736x/c1/17/f7/c117f7aa5d1e7b98d79c8c949ba38f1c.jpg" alt="Shopping Mall" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Shopping Mall</h3>
+                        <p>Thane, Maharashtra</p>
+                        <a href="#">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p>Hear what our clients have to say about their experience working with Chatrapati Builders.</p>
+            </div>
+            
+            <div class="testimonials-container">
+                <div class="testimonials-grid">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-img">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rajesh Mehta">
+                            </div>
+                            <div class="testimonial-author">
+                                <h4>Rajesh Mehta</h4>
+                                <p class="testimonial-role">Homeowner, Malabar Hill</p>
+                            </div>
                         </div>
-                        <div class="author-info">
-                            <h4>Rajesh Mehta</h4>
-                            <p>Retired Banker, Pune</p>
+                        <p class="testimonial-text">Chatrapati Builders transformed our vision into reality. Their attention to detail and commitment to quality is unmatched. Our new home is everything we dreamed of and more.</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-img">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Shah">
+                            </div>
+                            <div class="testimonial-author">
+                                <h4>Priya Shah</h4>
+                                <p class="testimonial-role">CEO, TechSolutions</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">We hired Chatrapati for our office renovation and were impressed with their professionalism. They completed the project ahead of schedule and within budget.</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-img">
+                                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Amit Patel">
+                            </div>
+                            <div class="testimonial-author">
+                                <h4>Amit Patel</h4>
+                                <p class="testimonial-role">Real Estate Developer</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">As a developer, I've worked with many construction firms. Chatrapati stands out for their reliability, transparency, and quality workmanship.</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-img">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Neha Kapoor">
+                            </div>
+                            <div class="testimonial-author">
+                                <h4>Neha Kapoor</h4>
+                                <p class="testimonial-role">Interior Designer</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">Collaborating with Chatrapati on several projects has been a pleasure. Their craftsmanship perfectly complements our design vision every time.</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 5 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-img">
+                                <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Rahul Verma">
+                            </div>
+                            <div class="testimonial-author">
+                                <h4>Rahul Verma</h4>
+                                <p class="testimonial-role">Restaurant Owner</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">They transformed our outdated space into a modern, functional restaurant. The team was respectful of our budget and timeline constraints.</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 6 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-img">
+                                <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Sunita Reddy">
+                            </div>
+                            <div class="testimonial-author">
+                                <h4>Sunita Reddy</h4>
+                                <p class="testimonial-role">Homeowner, Pune</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">Our home renovation exceeded expectations. The project manager kept us informed at every stage, and the workers were courteous and skilled.</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 7 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-img">
+                                <img src="https://randomuser.me/api/portraits/men/28.jpg" alt="Vikram Joshi">
+                            </div>
+                            <div class="testimonial-author">
+                                <h4>Vikram Joshi</h4>
+                                <p class="testimonial-role">Commercial Property Owner</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">Chatrapati handled our complex office building project with expertise. They solved unexpected challenges professionally and kept the project on track.</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 8 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-img">
+                                <img src="https://randomuser.me/api/portraits/women/52.jpg" alt="Ananya Deshpande">
+                            </div>
+                            <div class="testimonial-author">
+                                <h4>Ananya Deshpande</h4>
+                                <p class="testimonial-role">Boutique Hotel Owner</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">The interior design and construction team worked magic on our heritage property. They preserved the character while adding modern comforts.</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 9 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-img">
+                                <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Arjun Malhotra">
+                            </div>
+                            <div class="testimonial-author">
+                                <h4>Arjun Malhotra</h4>
+                                <p class="testimonial-role">IT Company Director</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">Our new office space has boosted employee morale and productivity. Chatrapati understood our tech company's needs and delivered perfectly.</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 10 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-img">
+                                <img src="https://randomuser.me/api/portraits/women/29.jpg" alt="Meera Iyer">
+                            </div>
+                            <div class="testimonial-author">
+                                <h4>Meera Iyer</h4>
+                                <p class="testimonial-role">Retail Store Owner</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">The store renovation was completed with minimal disruption to our business. The team worked efficiently and cleaned up thoroughly each day.</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
                     </div>
                 </div>
@@ -858,26 +1660,221 @@
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="cta-section">
+    <!-- Team Section -->
+    <section class="section team" id="team">
         <div class="container">
-            <h2>Ready to Find Your Perfect Property?</h2>
-            <p>Our land experts are available to understand your requirements and suggest the best options</p>
-            <div style="display: flex; justify-content: center; gap: 20px;">
-                <a href="#" class="btn" style="background-color: var(--secondary);">Schedule Site Visit</a>
-                <a href="#" class="btn btn-outline">Contact Our Agent</a>
+            <div class="section-title">
+                <h2>Our Team</h2>
+                <p>Meet the talented professionals who make Chatrapati Builders a leader in the construction industry.</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-img">
+                        <img src="assets/team1.jpg" alt="Vikram Singh">
+                    </div>
+                    <div class="team-info">
+                        <h3>Vikram Singh</h3>
+                        <p>Founder & CEO</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-img">
+                        <img src="assets/team2.jpg" alt="Anjali Desai">
+                    </div>
+                    <div class="team-info">
+                        <h3>Anjali Desai</h3>
+                        <p>Chief Architect</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-img">
+                        <img src="assets/team3.jpg" alt="Rahul Sharma">
+                    </div>
+                    <div class="team-info">
+                        <h3>Rahul Sharma</h3>
+                        <p>Project Manager</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-img">
+                        <img src="assets/team4.jpg" alt="Neha Kapoor">
+                    </div>
+                    <div class="team-info">
+                        <h3>Neha Kapoor</h3>
+                        <p>Interior Designer</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">250+</div>
+                    <div class="stat-text">Projects Completed</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-text">Years Experience</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-text">Happy Clients</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-text">Awards Won</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our team to discuss your construction project or request a free consultation.</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Build Something Amazing Together</h3>
+                    <p>We're here to answer your questions and provide expert guidance for your construction needs.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Our Office</h4>
+                                <p>123 Construction Avenue, Mumbai, Maharashtra 400001</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Call Us</h4>
+                                <p><a href="tel:+912234567890">+91 22 3456 7890</a></p>
+                                <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email Us</h4>
+                                <p><a href="mailto:info@chatrapatibuilders.com">info@chatrapatibuilders.com</a></p>
+                                <p><a href="mailto:sales@chatrapatibuilders.com">sales@chatrapatibuilders.com</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Working Hours</h4>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                                <p>Saturday: 10:00 AM - 4:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="residential">Residential Construction</option>
+                                <option value="commercial">Commercial Construction</option>
+                                <option value="renovation">Renovation & Remodeling</option>
+                                <option value="interior">Interior Design</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-column">
+                <div class="footer-col">
                     <h3>About Us</h3>
-                    <p style="color: #bbb; margin-bottom: 20px;">Chatrapati Builders & Developers has been a trusted name in Maharashtra's real estate sector since 1998, specializing in land development and property solutions.</p>
-                    <div class="social-links">
+                    <p>Chatrapati Builders & Developers is a premier construction company dedicated to delivering exceptional quality and innovative design solutions since 2003.</p>
+                    <div class="footer-social">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -885,54 +1882,195 @@
                     </div>
                 </div>
                 
-                <div class="footer-column">
+                <div class="footer-col">
                     <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Properties</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact</a></li>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-column">
-                    <h3>Property Types</h3>
-                    <ul>
-                        <li><a href="#">Residential Plots</a></li>
-                        <li><a href="#">Farm Land</a></li>
-                        <li><a href="#">Commercial Land</a></li>
-                        <li><a href="#">Industrial Plots</a></li>
-                        <li><a href="#">NA Plots</a></li>
-                        <li><a href="#">Investment Properties</a></li>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Residential Construction</a></li>
+                        <li><a href="#">Commercial Construction</a></li>
+                        <li><a href="#">Renovation & Remodeling</a></li>
+                        <li><a href="#">Interior Design</a></li>
+                        <li><a href="#">Project Management</a></li>
+                        <li><a href="#">Sustainable Building</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <div class="contact-info">
-                        <p><i class="fas fa-map-marker-alt"></i> Office No. 302, Shivalik Plaza, Pune - 411004, Maharashtra</p>
-                        <p><i class="fas fa-phone-alt"></i> +91 9876543210</p>
-                        <p><i class="fas fa-envelope"></i> info@chatrapatibuilders.com</p>
-                        <p><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 7:00 PM</p>
-                    </div>
-                </div>
+            
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 Chatrapati Builders & Developers. All Rights Reserved. | <a href="#" style="color: var(--secondary);">Privacy Policy</a> | <a href="#" style="color: var(--secondary);">Terms & Conditions</a></p>
+                <p>Made By RR Industryy</p>
+                <p>&copy; 2023 Chatrapati Builders & Developers. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
     <script>
-        // Simple script for mobile menu toggle (can be enhanced)
-        document.addEventListener('DOMContentLoaded', function() {
-            // You can add interactive functionality here
-            console.log('Website loaded successfully');
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Sticky Header
+        const header = document.querySelector('.header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Back to Top Button
+        const backToTopBtn = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+        
+        // Testimonial Slider
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+        const sliderDots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+        
+        function showSlide(index) {
+            testimonialSlides.forEach(slide => slide.classList.remove('active'));
+            sliderDots.forEach(dot => dot.classList.remove('active'));
+            
+            testimonialSlides[index].classList.add('active');
+            sliderDots[index].classList.add('active');
+            currentSlide = index;
+        }
+        
+        sliderDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
+        });
+        
+        // Auto slide change
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % testimonialSlides.length;
+            showSlide(currentSlide);
+        }, 5000);
+        
+        // Portfolio Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the data to a server
+            // For demo, we'll just show an alert
+            alert(`Thank you, ${name}! Your message has been sent. We'll contact you soon at ${email}.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on Scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.about-content, .service-card, .portfolio-item, .team-member');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.about-content, .service-card, .portfolio-item, .team-member').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
     </script>
 </body>
 </html>
+
