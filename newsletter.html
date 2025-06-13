@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe to Newsletter | Chatrapati Builders</title>
+    <meta name="description" content="Subscribe to our newsletter for the latest updates from Chatrapati Builders & Developers.">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #e67e22;
+            --primary-dark: #d35400;
+            --secondary: #2c3e50;
+            --light: #ecf0f1;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .newsletter-container {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .newsletter-header {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem;
+        }
+        
+        .newsletter-header h1 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.5rem;
+        }
+        
+        .newsletter-header p {
+            opacity: 0.9;
+        }
+        
+        .newsletter-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        
+        .newsletter-content {
+            padding: 2rem;
+        }
+        
+        .newsletter-content p {
+            margin-bottom: 2rem;
+            color: #555;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .newsletter-form input {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .btn {
+            padding: 1rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: inherit;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .success-message {
+            display: none;
+            padding: 2rem;
+        }
+        
+        .success-message h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .success-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .back-to-home {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-to-home:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="newsletter-container">
+        <div class="newsletter-header">
+            <div class="newsletter-icon">
+                <i class="fas fa-envelope-open-text"></i>
+            </div>
+            <h1>Stay Updated</h1>
+            <p>Subscribe to our newsletter for the latest projects and updates</p>
+        </div>
+        
+        <div class="newsletter-content" id="subscribeForm">
+            <p>Join our mailing list to receive exclusive updates about our new projects, construction tips, and special offers.</p>
+            
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" name="email" id="newsletterEmail" placeholder="Your email address" required>
+                <button type="submit" class="btn">Subscribe Now</button>
+            </form>
+        </div>
+        
+        <div class="success-message" id="successMessage">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Thank You for Subscribing!</h2>
+            <p>You have successfully subscribed to our newsletter. We'll keep you updated with our latest projects and news.</p>
+            <a href="index.html" class="back-to-home">Back to Homepage</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get the email from URL parameters if present
+            const urlParams = new URLSearchParams(window.location.search);
+            const emailFromUrl = urlParams.get('email');
+            
+            // Use email from form or from URL
+            const email = emailFromUrl || document.getElementById('newsletterEmail').value;
+            
+            // Here you would typically send this to your server
+            // For demo purposes, we'll just show the success message
+            document.getElementById('subscribeForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Store in localStorage to show they're subscribed
+            localStorage.setItem('subscribedToNewsletter', 'true');
+        });
+        
+        // Check if they came from the main site with email parameter
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const emailFromUrl = urlParams.get('email');
+            
+            if (emailFromUrl) {
+                document.getElementById('newsletterEmail').value = emailFromUrl;
+            }
+            
+            // Check if they're already subscribed
+            if (localStorage.getItem('subscribedToNewsletter') === 'true') {
+                document.getElementById('subscribeForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
