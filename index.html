@@ -731,7 +731,7 @@
             color: var(--white);
         }
         
-        /* Testimonials Section */
+        /* Testimonials Section - Enhanced */
         .testimonials {
             background-color: var(--white);
             overflow: hidden;
@@ -756,7 +756,7 @@
         
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-250px * 15 - 2rem * 15)); }
+            100% { transform: translateX(calc(-250px * 7 - 2rem * 7)); }
         }
         
         .testimonial-card {
@@ -971,7 +971,7 @@
             transform: translateY(-3px);
         }
         
-        /* Stats Section */
+        /* Stats Section - Enhanced */
         .stats {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/stats-bg.jpg') no-repeat center center/cover;
             color: var(--white);
@@ -980,14 +980,18 @@
         }
         
         .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
         }
         
         .stat-item {
             padding: 2rem 1rem;
             transition: var(--transition);
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
         }
         
         .stat-item:hover {
@@ -1012,7 +1016,7 @@
             font-weight: 500;
         }
         
-        /* Contact Section */
+        /* Contact Section - Enhanced with Map */
         .contact {
             background-color: var(--white);
         }
@@ -1021,6 +1025,21 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
+        }
+        
+        .contact-map {
+            grid-column: span 2;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
         
         .contact-info {
@@ -1154,7 +1173,7 @@
             font-size: 1rem;
         }
         
-        /* Footer */
+        /* Footer - Enhanced */
         .footer {
             background-color: var(--secondary);
             color: var(--light);
@@ -1207,12 +1226,17 @@
             transform: translateX(5px);
         }
         
-        .footer-newsletter input {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: none;
-            border-radius: 4px;
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
             margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .footer-contact i {
+            color: var(--primary);
+            margin-right: 1rem;
+            min-width: 20px;
         }
         
         .footer-social {
@@ -1318,6 +1342,16 @@
         }
         
         /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-map {
+                grid-column: span 1;
+            }
+        }
+        
         @media (max-width: 992px) {
             .section {
                 padding: 4rem 0;
@@ -1380,6 +1414,16 @@
             .testimonials::after {
                 width: 50px;
             }
+            
+            .stats-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-item {
+                min-width: 100%;
+                max-width: 300px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1395,13 +1439,17 @@
                 font-size: 2rem;
             }
             
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
             .testimonials::before,
             .testimonials::after {
                 width: 30px;
+            }
+            
+            .contact-map {
+                height: 300px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1661,7 +1709,7 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section - Enhanced -->
     <section class="section testimonials">
         <div class="container">
             <div class="section-title">
@@ -1819,18 +1867,18 @@
                     </div>
                 </div>
                 
-                <!-- Testimonial 8 -->
+                <!-- Duplicated testimonials for seamless scrolling -->
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-icon">
-                            <i class="fas fa-hotel"></i>
+                            <i class="fas fa-user"></i>
                         </div>
                         <div class="testimonial-author">
-                            <h4>Ananya Deshpande</h4>
-                            <p class="testimonial-role">Boutique Hotel Owner</p>
+                            <h4>Rajesh Mehta</h4>
+                            <p class="testimonial-role">Homeowner, Malabar Hill</p>
                         </div>
                     </div>
-                    <p class="testimonial-text">The interior design and construction team worked magic on our heritage property. They preserved the character while adding modern comforts.</p>
+                    <p class="testimonial-text">Chatrapati Builders transformed our vision into reality. Their attention to detail and commitment to quality is unmatched. Our new home is everything we dreamed of and more.</p>
                     <div class="testimonial-rating">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -1840,150 +1888,23 @@
                     </div>
                 </div>
                 
-                <!-- Testimonial 9 -->
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-icon">
-                            <i class="fas fa-laptop"></i>
+                            <i class="fas fa-user-tie"></i>
                         </div>
                         <div class="testimonial-author">
-                            <h4>Arjun Malhotra</h4>
-                            <p class="testimonial-role">IT Company Director</p>
+                            <h4>Priya Shah</h4>
+                            <p class="testimonial-role">CEO, TechSolutions</p>
                         </div>
                     </div>
-                    <p class="testimonial-text">Our new office space has boosted employee morale and productivity. Chatrapati understood our tech company's needs and delivered perfectly.</p>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 10 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-icon">
-                            <i class="fas fa-store"></i>
-                        </div>
-                        <div class="testimonial-author">
-                            <h4>Meera Iyer</h4>
-                            <p class="testimonial-role">Retail Store Owner</p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">The store renovation was completed with minimal disruption to our business. The team worked efficiently and cleaned up thoroughly each day.</p>
+                    <p class="testimonial-text">We hired Chatrapati for our office renovation and were impressed with their professionalism. They completed the project ahead of schedule and within budget.</p>
                     <div class="testimonial-rating">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 11 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-icon">
-                            <i class="fas fa-university"></i>
-                        </div>
-                        <div class="testimonial-author">
-                            <h4>Sanjay Gupta</h4>
-                            <p class="testimonial-role">School Principal</p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">The school expansion project was completed on time despite the challenges of working around our academic schedule. Excellent coordination!</p>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 12 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <div class="testimonial-author">
-                            <h4>Riya Kapoor</h4>
-                            <p class="testimonial-role">Homeowner, Bandra</p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">They built our dream home exactly as we envisioned. The team was patient with our many requests and changes during the process.</p>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 13 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-icon">
-                            <i class="fas fa-industry"></i>
-                        </div>
-                        <div class="testimonial-author">
-                            <h4>Rajiv Bhatia</h4>
-                            <p class="testimonial-role">Factory Owner</p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">Our new factory building was constructed with industrial-grade materials and meets all safety standards. Very professional work.</p>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 14 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-icon">
-                            <i class="fas fa-clinic-medical"></i>
-                        </div>
-                        <div class="testimonial-author">
-                            <h4>Dr. Anil Sharma</h4>
-                            <p class="testimonial-role">Hospital Director</p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">The hospital renovation was handled with utmost care for our patients. The team worked night shifts to minimize disruption to medical services.</p>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 15 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-icon">
-                            <i class="fas fa-warehouse"></i>
-                        </div>
-                        <div class="testimonial-author">
-                            <h4>Manoj Singh</h4>
-                            <p class="testimonial-role">Warehouse Owner</p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">Our new warehouse facility was completed ahead of schedule and under budget. The structural design maximizes our storage capacity perfectly.</p>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
                     </div>
                 </div>
             </div>
@@ -2086,7 +2007,7 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
+    <!-- Stats Section - Enhanced -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
@@ -2113,7 +2034,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section - Enhanced with Map -->
     <section class="section contact" id="contact">
         <div class="container">
             <div class="section-title">
@@ -2122,6 +2043,10 @@
             </div>
             
             <div class="contact-container">
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.881348287199!2d72.87784661490084!3d19.06415568709114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8d6c8d6c8d7%3A0x3be7c8d6c8d6c8d8!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1650000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                
                 <div class="contact-info">
                     <h3>Let's Build Something Amazing Together</h3>
                     <p>We're here to answer your questions and provide expert guidance for your construction needs.</p>
@@ -2221,7 +2146,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - Enhanced -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -2261,12 +2186,25 @@
                 </div>
                 
                 <div class="footer-col">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe to our newsletter for the latest updates and project news.</p>
-                    <form class="footer-newsletter" action="newsletter.html" method="GET" target="_blank">
-                        <input type="email" name="email" placeholder="Your Email Address" required>
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
-                    </form>
+                    <h3>Contact Details</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Construction Avenue, Mumbai, Maharashtra 400001</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 22 3456 7890</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@chatrapatibuilders.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
             
