@@ -1064,8 +1064,8 @@
         .contact-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
+            margin-bottom: 0.5rem; /* Reduced margin */
+            padding: 0.5rem; /* Reduced padding */
             border-radius: 8px;
             transition: var(--transition);
         }
@@ -1075,8 +1075,8 @@
         }
         
         .contact-icon {
-            width: 50px;
-            height: 50px;
+            width: 40px; /* Slightly smaller */
+            height: 40px; /* Slightly smaller */
             border-radius: 50%;
             background-color: rgba(230, 126, 34, 0.1);
             display: flex;
@@ -1084,19 +1084,21 @@
             justify-content: center;
             margin-right: 1rem;
             color: var(--primary);
-            font-size: 1.2rem;
+            font-size: 1rem; /* Smaller icon */
             flex-shrink: 0;
         }
         
         .contact-text h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-size: 1rem; /* Smaller heading */
+            margin-bottom: 0.3rem; /* Reduced margin */
             color: var(--secondary);
         }
         
         .contact-text p, .contact-text a {
             color: var(--gray);
             transition: var(--transition);
+            font-size: 0.9rem; /* Smaller text */
+            margin-bottom: 0.2rem; /* Reduced margin */
         }
         
         .contact-text a:hover {
@@ -1106,15 +1108,15 @@
         .contact-social {
             display: flex;
             gap: 1rem;
-            margin-top: 2rem;
+            margin-top: 1.5rem; /* Reduced margin */
         }
         
         .contact-social a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
+            width: 40px; /* Slightly smaller */
+            height: 40px; /* Slightly smaller */
             border-radius: 50%;
             background-color: rgba(230, 126, 34, 0.1);
             transition: var(--transition);
@@ -1126,8 +1128,8 @@
         }
         
         .contact-social img {
-            width: 24px;
-            height: 24px;
+            width: 20px; /* Smaller icons */
+            height: 20px; /* Smaller icons */
         }
         
         /* Contact Form Styles */
@@ -1257,7 +1259,7 @@
         .footer-contact li {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem; /* Reduced margin */
             opacity: 0.8;
         }
         
@@ -1277,8 +1279,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
+            width: 40px; /* Slightly smaller */
+            height: 40px; /* Slightly smaller */
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.1);
             transition: var(--transition);
@@ -1290,8 +1292,8 @@
         }
         
         .footer-social img {
-            width: 24px;
-            height: 24px;
+            width: 20px; /* Smaller icons */
+            height: 20px; /* Smaller icons */
         }
         
         .footer-bottom {
@@ -2086,7 +2088,7 @@
                             </div>
                             <div class="contact-text">
                                 <h4>Our Office</h4>
-                                <p>123 Construction Avenue, Mumbai, Maharashtra 400001</p>
+                                <p><a href="https://www.google.com/maps/place/123+Construction+Avenue,+Mumbai,+Maharashtra+400001" target="_blank">123 Construction Avenue, Mumbai, Maharashtra 400001</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -2225,15 +2227,15 @@
                     <ul class="footer-contact">
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>123 Construction Avenue, Mumbai, Maharashtra 400001</span>
+                            <span><a href="https://www.google.com/maps/place/123+Construction+Avenue,+Mumbai,+Maharashtra+400001" target="_blank">123 Construction Avenue, Mumbai, Maharashtra 400001</a></span>
                         </li>
                         <li>
                             <i class="fas fa-phone-alt"></i>
-                            <span>+91 22 3456 7890</span>
+                            <span><a href="tel:+912234567890">+91 22 3456 7890</a></span>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <span>info@chatrapatibuilders.com</span>
+                            <span><a href="mailto:info@chatrapatibuilders.com">info@chatrapatibuilders.com</a></span>
                         </li>
                         <li>
                             <i class="fas fa-clock"></i>
