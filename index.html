@@ -1065,6 +1065,13 @@
             display: flex;
             align-items: flex-start;
             margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            background-color: rgba(230, 126, 34, 0.1);
         }
         
         .contact-icon {
@@ -1171,6 +1178,27 @@
             width: 100%;
             padding: 1rem;
             font-size: 1rem;
+        }
+        
+        /* Form Success/Error Messages */
+        .form-message {
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            text-align: center;
+            display: none;
+        }
+        
+        .form-message.success {
+            background-color: rgba(39, 174, 96, 0.1);
+            color: var(--success);
+            display: block;
+        }
+        
+        .form-message.error {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--danger);
+            display: block;
         }
         
         /* Footer - Enhanced */
@@ -2034,126 +2062,124 @@
         </div>
     </section>
 
-<!-- Contact Section -->
-<section class="section contact" id="contact">
-    <div class="container">
-        <div class="section-title">
-            <h2>Contact Us</h2>
-            <p>Get in touch with our team to discuss your construction project or request a free consultation.</p>
-        </div>
-        
-        <div class="contact-container">
-                <div class="contact-map">
-                   <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1635.2963530913821!2d79.0936814!3d21.144131!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0b88aa25acd%3A0x4fc17f5053c37024!2sBhumi%20Abhilekh%20Vibhag%20Sahakari%20Santha%20Nagpur!5e1!3m2!1sen!2sin!4v1750017845753!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our team to discuss your construction project or request a free consultation.</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Build Something Amazing Together</h3>
+                    <p>We're here to answer your questions and provide expert guidance for your construction needs.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Our Office</h4>
+                                <p>123 Construction Avenue, Mumbai, Maharashtra 400001</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Call Us</h4>
+                                <p><a href="tel:+912234567890">+91 22 3456 7890</a></p>
+                                <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email Us</h4>
+                                <p><a href="mailto:info@chatrapatibuilders.com">info@chatrapatibuilders.com</a></p>
+                                <p><a href="mailto:sales@chatrapatibuilders.com">sales@chatrapatibuilders.com</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Working Hours</h4>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                                <p>Saturday: 10:00 AM - 4:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-social">
+                        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook"></a>
+                        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+                        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="LinkedIn"></a>
+                        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+                        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733646.png" alt="YouTube"></a>
+                    </div>
                 </div>
-        
-        <!-- Two-column layout below map -->
-        <div class="contact-columns">
-            <!-- Contact Info Column -->
-            <div class="contact-info">
-                <h3>Let's Build Something Amazing Together</h3>
-                <p>We're here to answer your questions and provide expert guidance for your construction needs.</p>
                 
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                <div class="contact-form">
+                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="3ad2ac7d-5205-4c7f-b856-de35b9a592f3">
+                        <input type="hidden" name="subject" value="New Contact Form Submission from Chatrapati Builders">
+                        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+                        <input type="checkbox" name="botcheck" id="" style="display: none;">
+                        
+                        <div id="formMessage" class="form-message" style="display: none;"></div>
+                        
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
                         </div>
-                        <div class="contact-text">
-                            <h4>Our Office</h4>
-                            <p>123 Construction Avenue, Mumbai, Maharashtra 400001</p>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required placeholder="Enter your email address">
                         </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone-alt"></i>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
                         </div>
-                        <div class="contact-text">
-                            <h4>Call Us</h4>
-                            <p><a href="tel:+912234567890">+91 22 3456 7890</a></p>
-                            <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="residential">Residential Construction</option>
+                                <option value="commercial">Commercial Construction</option>
+                                <option value="renovation">Renovation & Remodeling</option>
+                                <option value="interior">Interior Design</option>
+                                <option value="other">Other</option>
+                            </select>
                         </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required placeholder="Tell us about your project"></textarea>
                         </div>
-                        <div class="contact-text">
-                            <h4>Email Us</h4>
-                            <p><a href="mailto:info@chatrapatibuilders.com">info@chatrapatibuilders.com</a></p>
-                            <p><a href="mailto:sales@chatrapatibuilders.com">sales@chatrapatibuilders.com</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Working Hours</h4>
-                            <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                            <p>Saturday: 10:00 AM - 4:00 PM</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                        
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
                 </div>
             </div>
             
-            <!-- Contact Form Column -->
-            <div class="contact-form">
-                <form action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="3ad2ac7d-5205-4c7f-b856-de35b9a592f3">
-                    <input type="hidden" name="redirect" value="https://yourwebsite.com/thank-you">
-                    
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="Enter your email address">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="service">Service Interested In</label>
-                        <select id="service" name="service">
-                            <option value="">Select a service</option>
-                            <option value="residential">Residential Construction</option>
-                            <option value="commercial">Commercial Construction</option>
-                            <option value="renovation">Renovation & Remodeling</option>
-                            <option value="interior">Interior Design</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" name="message" required placeholder="Tell us about your project"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
+            <div class="contact-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1635.2963530913821!2d79.0936814!3d21.144131!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0b88aa25acd%3A0x4fc17f5053c37024!2sBhumi%20Abhilekh%20Vibhag%20Sahakari%20Santha%20Nagpur!5e1!3m2!1sen!2sin!4v1750017085221!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
-    </div>
-</section>
-
-<style>
+    </section>
+    
     <!-- Footer - Enhanced -->
     <footer class="footer">
         <div class="container">
@@ -2304,23 +2330,61 @@
             });
         });
         
-        // Form Submission
+        // Form Submission with Web3Forms
         const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
         
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+            // Disable submit button
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
             
-            // Here you would typically send the data to a server
-            // For demo, we'll just show an alert
-            alert(`Thank you, ${name}! Your message has been sent. We'll contact you soon at ${email}.`);
+            // Get form data
+            const formData = new FormData(contactForm);
             
-            // Reset form
-            contactForm.reset();
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Show success message
+                    formMessage.textContent = 'Thank you! Your message has been sent successfully. We will contact you soon.';
+                    formMessage.className = 'form-message success';
+                    formMessage.style.display = 'block';
+                    
+                    // Reset form
+                    contactForm.reset();
+                } else {
+                    // Show error message
+                    formMessage.textContent = 'There was an error sending your message. Please try again later.';
+                    formMessage.className = 'form-message error';
+                    formMessage.style.display = 'block';
+                }
+            } catch (error) {
+                // Show error message
+                formMessage.textContent = 'There was an error sending your message. Please try again later.';
+                formMessage.className = 'form-message error';
+                formMessage.style.display = 'block';
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            }
         });
         
         // Smooth Scrolling for Anchor Links
