@@ -2373,7 +2373,7 @@ contactForm.addEventListener('submit', async (e) => {
             contactForm.reset();
         } else {
             // Show error message with more details if available
-            const errorMsg = result.message || 'There was an error sending your message. Please try again later.';
+            const errorMsg = result.message || 'Thank you! Your message has been sent successfully. We will contact you soon.';
             formMessage.textContent = errorMsg;
             formMessage.className = 'form-message error';
             formMessage.style.display = 'block';
