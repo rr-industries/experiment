@@ -1,47 +1,1387 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Same head content as previous example -->
-    <title>Luxury Plots at Malabar Hills | Chatrapati Builders</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Chatrapati Builders</title>
+    <meta name="description" content="Detailed information about our construction project">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #e67e22;
+            --primary-dark: #d35400;
+            --secondary: #2c3e50;
+            --light: #ecf0f1;
+            --dark: #34495e;
+            --white: #ffffff;
+            --black: #222222;
+            --gray: #95a5a6;
+            --gold: #d4af37;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .section {
+            padding: 6rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--gray);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--gold));
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            padding: 1rem 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header.scrolled {
+            padding: 0.5rem 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(45deg, var(--primary), var(--gold), var(--primary));
+            box-shadow: 0 0 15px rgba(230, 126, 34, 0.3);
+            transition: var(--transition);
+        }
+        
+        .logo:hover img {
+            transform: rotate(15deg);
+            box-shadow: 0 0 20px rgba(230, 126, 34, 0.5);
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-left: 0.8rem;
+        }
+        
+        .logo-text span {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--gold));
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .mobile-menu-btn:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+        
+        /* Project Hero */
+        .project-hero {
+            height: 60vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            position: relative;
+            margin-top: 80px;
+        }
+        
+        .project-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        .project-hero-content {
+            max-width: 800px;
+            padding: 0 1.5rem;
+        }
+        
+        .project-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .project-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .meta-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(230, 126, 34, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .meta-text h4 {
+            font-size: 0.9rem;
+            color: var(--light);
+            margin-bottom: 0.3rem;
+        }
+        
+        .meta-text p {
+            font-size: 1rem;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+        
+        /* Project Details */
+        .project-details {
+            padding: 5rem 0;
+        }
+        
+        .project-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .project-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .project-content p {
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .project-features {
+            margin: 2rem 0;
+        }
+        
+        .project-features h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .feature-icon {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        /* Project Gallery */
+        .project-gallery {
+            padding: 0 0 5rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 250px;
+            position: relative;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Project Navigation */
+        .project-nav {
+            padding: 3rem 0;
+            background-color: var(--light);
+        }
+        
+        .project-nav-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .project-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            max-width: 300px;
+        }
+        
+        .project-nav-item:hover {
+            background-color: rgba(230, 126, 34, 0.1);
+        }
+        
+        .project-nav-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .project-nav-text h4 {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 0.3rem;
+        }
+        
+        .project-nav-text h3 {
+            font-size: 1.1rem;
+            color: var(--secondary);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--secondary);
+            color: var(--light);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--gold));
+        }
+        
+        .footer-col p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            opacity: 0.8;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+        
+        .footer-contact i {
+            color: var(--primary);
+            margin-right: 1rem;
+            min-width: 20px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .footer-social img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--gold));
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: linear-gradient(45deg, var(--primary-dark), var(--gold));
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .project-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-hero {
+                height: auto;
+                padding: 8rem 0 4rem;
+            }
+            
+            .project-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .project-nav-container {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .project-nav-item {
+                max-width: 100%;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .project-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Same header as previous example -->
-
-    <!-- Project Hero -->
-    <section class="project-hero">
+    <!-- Header -->
+    <header class="header">
         <div class="container">
-            <h1>Luxury Plots at Malabar Hills</h1>
-            <p>Premium residential plots with panoramic city views and world-class amenities</p>
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="Chatrapati_Builders_logo.jpg" alt="Chatrapati Builders Logo">
+                    <span class="logo-text">Chatrapati <span>Builders</span></span>
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#portfolio">Portfolio</a></li>
+                    <li><a href="index.html#team">Team</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <img src="" alt="Project Image" class="project-hero-bg" id="projectHeroBg">
+        <div class="container">
+            <div class="project-hero-content">
+                <h1 id="projectTitle">Project Title</h1>
+                <p id="projectLocation">Location</p>
+                
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="meta-text">
+                            <h4>Year Completed</h4>
+                            <p id="projectYear">2023</p>
+                        </div>
+                    </div>
+                    
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <div class="meta-text">
+                            <h4>Category</h4>
+                            <p id="projectCategory">Residential</p>
+                        </div>
+                    </div>
+                    
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                        <div class="meta-text">
+                            <h4>Area</h4>
+                            <p id="projectArea">5,000 sq.ft.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="meta-text">
+                            <h4>Client</h4>
+                            <p id="projectClient">Private</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#contact" class="btn btn-primary">Get Similar Project</a>
+            </div>
         </div>
     </section>
 
-    <!-- Project Details -->
+    <!-- Project Details Section -->
     <section class="project-details">
         <div class="container">
-            <!-- Legal & Ownership -->
-            <div class="detail-card">
-                <h3>Legal & Ownership Details</h3>
-                <div class="detail-grid">
-                    <div class="detail-item">
-                        <strong>Title Status</strong>
-                        <span>Marketable & Clear (Free from liens/encumbrances)</span>
+            <div class="project-container">
+                <div class="project-content">
+                    <h2>Project Overview</h2>
+                    <p id="projectOverview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    
+                    <p id="projectDetails">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    
+                    <div class="project-features">
+                        <h3>Key Features</h3>
+                        <div class="features-grid" id="projectFeatures">
+                            <!-- Features will be added dynamically -->
+                        </div>
                     </div>
-                    <div class="detail-item">
-                        <strong>Ownership Type</strong>
-                        <span>Freehold</span>
+                </div>
+                
+                <div class="project-sidebar">
+                    <h2>Project Specifications</h2>
+                    <div class="specs-list" id="projectSpecs">
+                        <!-- Specifications will be added dynamically -->
                     </div>
-                    <div class="detail-item">
-                        <strong>RERA Registration</strong>
-                        <span>MH/RERA/1234/2023 (<a href="https://maharera.mahaonline.gov.in" target="_blank">Verify</a>)</span>
+                    
+                    <h2>Challenges & Solutions</h2>
+                    <div id="projectChallenges">
+                        <!-- Challenges will be added dynamically -->
                     </div>
-                    <!-- More items... -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Gallery Section -->
+    <section class="project-gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Project Gallery</h2>
+                <p>Explore the beauty and craftsmanship of this project through our photo gallery.</p>
+            </div>
+            
+            <div class="gallery-grid" id="projectGallery">
+                <!-- Gallery items will be added dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Navigation -->
+    <section class="project-nav">
+        <div class="container">
+            <div class="project-nav-container">
+                <a href="#" class="project-nav-item" id="prevProject">
+                    <div class="project-nav-icon">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="project-nav-text">
+                        <h4>Previous Project</h4>
+                        <h3 id="prevProjectTitle">Luxury Villa</h3>
+                    </div>
+                </a>
+                
+                <a href="index.html#portfolio" class="btn btn-secondary">
+                    Back to Portfolio
+                </a>
+                
+                <a href="#" class="project-nav-item" id="nextProject">
+                    <div class="project-nav-text" style="text-align: right;">
+                        <h4>Next Project</h4>
+                        <h3 id="nextProjectTitle">Office Complex</h3>
+                    </div>
+                    <div class="project-nav-icon">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <p>Chatrapati Builders & Developers is a premier construction company dedicated to delivering exceptional quality and innovative design solutions since 2003.</p>
+                    <div class="footer-social">
+                        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook"></a>
+                        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+                        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="LinkedIn"></a>
+                        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="index.html#team">Our Team</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Residential Construction</a></li>
+                        <li><a href="#">Commercial Construction</a></li>
+                        <li><a href="#">Renovation & Remodeling</a></li>
+                        <li><a href="#">Interior Design</a></li>
+                        <li><a href="#">Project Management</a></li>
+                        <li><a href="#">Sustainable Building</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Details</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><a href="https://www.google.com/maps/place/123+Construction+Avenue,+Mumbai,+Maharashtra+400001" target="_blank">123 Construction Avenue, Mumbai, Maharashtra 400001</a></span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span><a href="tel:+912234567890">+91 22 3456 7890</a></span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span><a href="mailto:info@chatrapatibuilders.com">info@chatrapatibuilders.com</a></span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
             
-            <!-- Rest of the content same as previous example -->
+            <div class="footer-bottom">
+                <p>Made By RR Industryy</p>
+                <p>&copy; 2023 Chatrapati Builders & Developers. All Rights Reserved.</p>
+            </div>
         </div>
-    </section>
+    </footer>
 
-    <!-- Same footer as previous example -->
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // Project Data - This would normally come from a database or API
+        const projects = {
+            "project1": {
+                title: "Luxury Villa",
+                location: "Malabar Hill, Mumbai",
+                year: "2023",
+                category: "Residential",
+                area: "8,500 sq.ft.",
+                client: "Private",
+                overview: "This stunning luxury villa in Mumbai's prestigious Malabar Hill neighborhood showcases our commitment to exquisite craftsmanship and attention to detail. The project involved constructing a 5-bedroom villa with panoramic sea views, a rooftop infinity pool, and smart home automation throughout.",
+                details: "The design blends contemporary architecture with traditional Indian elements, featuring hand-carved stone accents, custom woodwork, and expansive glass walls that blur the boundaries between indoor and outdoor living. The property includes a home theater, wine cellar, and a landscaped garden with water features.",
+                features: [
+                    "5 bedrooms with ensuite bathrooms",
+                    "Rooftop infinity pool with city views",
+                    "Smart home automation system",
+                    "Home theater and wine cellar",
+                    "Landscaped garden with water features",
+                    "Solar panel installation",
+                    "Hand-carved stone accents",
+                    "Custom woodwork throughout"
+                ],
+                specs: [
+                    { name: "Project Type", value: "Luxury Residential" },
+                    { name: "Construction Area", value: "8,500 sq.ft." },
+                    { name: "Plot Area", value: "12,000 sq.ft." },
+                    { name: "Duration", value: "18 months" },
+                    { name: "Architect", value: "Anjali Desai" },
+                    { name: "Structural Engineer", value: "Rahul Sharma" },
+                    { name: "Materials", value: "Italian marble, Teak wood, Glass" }
+                ],
+                challenges: [
+                    {
+                        challenge: "The steep slope of the site presented foundation challenges.",
+                        solution: "We implemented a specialized retaining wall system and deep pile foundations to ensure stability."
+                    },
+                    {
+                        challenge: "Client requested last-minute changes to the floor plan.",
+                        solution: "Our flexible team redesigned the layout without delaying the project timeline."
+                    },
+                    {
+                        challenge: "Sourcing high-quality materials during supply chain disruptions.",
+                        solution: "We leveraged our network of trusted suppliers and found alternative materials that met our standards."
+                    }
+                ],
+                images: [
+                    "https://i.pinimg.com/736x/e6/cb/c6/e6cbc604721f139f9067dfd63ceaf886.jpg",
+                    "https://i.pinimg.com/736x/3e/99/ef/3e99efddd91a35b408a114fc50174c37.jpg",
+                    "https://i.pinimg.com/736x/69/91/a0/6991a06d2c0dfea1f6efa46286d65a81.jpg",
+                    "https://i.pinimg.com/736x/8e/18/60/8e1860c8a985a3dbf39f2a299d1b8a42.jpg",
+                    "https://i.pinimg.com/736x/84/5d/d0/845dd0a1c276d160ab25837d029352fc.jpg",
+                    "https://i.pinimg.com/736x/1d/06/14/1d06145d9a1cc00a2b93f9147119acc1.jpg"
+                ],
+                nextProject: "project2",
+                prevProject: "project6"
+            },
+            "project2": {
+                title: "Office Complex",
+                location: "Bandra Kurla Complex",
+                year: "2022",
+                category: "Commercial",
+                area: "50,000 sq.ft.",
+                client: "TechSolutions Inc.",
+                overview: "This modern office complex in Mumbai's business district was designed to foster collaboration and innovation. The project included the construction of a 7-story building with flexible workspaces, meeting rooms, and employee amenities.",
+                details: "The building features a striking glass facade with sun-shading louvers, a central atrium that floods the space with natural light, and sustainable design elements like rainwater harvesting and energy-efficient HVAC systems. The rooftop terrace offers panoramic views of the city.",
+                features: [
+                    "7-story glass facade building",
+                    "Flexible open-plan workspaces",
+                    "Central atrium with natural light",
+                    "Rooftop terrace with city views",
+                    "Rainwater harvesting system",
+                    "Energy-efficient HVAC",
+                    "Underground parking for 200 cars",
+                    "On-site cafeteria and gym"
+                ],
+                specs: [
+                    { name: "Project Type", value: "Commercial Office" },
+                    { name: "Construction Area", value: "50,000 sq.ft." },
+                    { name: "Floors", value: "7 + Basement" },
+                    { name: "Duration", value: "24 months" },
+                    { name: "Architect", value: "Design Collaborative" },
+                    { name: "Structural Engineer", value: "Rahul Sharma" },
+                    { name: "LEED Certification", value: "Gold" }
+                ],
+                challenges: [
+                    {
+                        challenge: "Tight urban site with limited access for construction vehicles.",
+                        solution: "We implemented just-in-time delivery scheduling and used smaller equipment suited for urban sites."
+                    },
+                    {
+                        challenge: "Client needed partial occupancy during final construction phases.",
+                        solution: "We sequenced work to complete lower floors first and implemented strict safety protocols."
+                    },
+                    {
+                        challenge: "Meeting strict energy efficiency targets.",
+                        solution: "We incorporated advanced insulation, high-performance glazing, and smart lighting controls."
+                    }
+                ],
+                images: [
+                    "https://i.pinimg.com/736x/46/45/a7/4645a763ebc5d4cb14f84f3f5e04c9c0.jpg",
+                    "https://i.pinimg.com/736x/3e/99/ef/3e99efddd91a35b408a114fc50174c37.jpg",
+                    "https://i.pinimg.com/736x/69/91/a0/6991a06d2c0dfea1f6efa46286d65a81.jpg",
+                    "https://i.pinimg.com/736x/8e/18/60/8e1860c8a985a3dbf39f2a299d1b8a42.jpg",
+                    "https://i.pinimg.com/736x/84/5d/d0/845dd0a1c276d160ab25837d029352fc.jpg",
+                    "https://i.pinimg.com/736x/1d/06/14/1d06145d9a1cc00a2b93f9147119acc1.jpg"
+                ],
+                nextProject: "project3",
+                prevProject: "project1"
+            },
+            "project3": {
+                title: "Apartment Building",
+                location: "Pune, Maharashtra",
+                year: "2021",
+                category: "Residential",
+                area: "75,000 sq.ft.",
+                client: "Urban Living Developers",
+                overview: "This 12-story apartment building offers luxury living in the heart of Pune. The project features 48 units ranging from 1,200 to 3,500 sq.ft., with premium finishes and amenities.",
+                details: "The building's design maximizes natural light and ventilation while providing privacy. Amenities include a swimming pool, fitness center, children's play area, and 24/7 security. The project was completed on time despite pandemic-related challenges.",
+                features: [
+                    "48 luxury apartments",
+                    "Swimming pool and deck",
+                    "State-of-the-art fitness center",
+                    "Children's play area",
+                    "Landscaped gardens",
+                    "24/7 security and CCTV",
+                    "Underground parking",
+                    "Rainwater harvesting system"
+                ],
+                specs: [
+                    { name: "Project Type", value: "Multi-family Residential" },
+                    { name: "Construction Area", value: "75,000 sq.ft." },
+                    { name: "Floors", value: "12 + Basement" },
+                    { name: "Duration", value: "30 months" },
+                    { name: "Architect", value: "Urban Design Studio" },
+                    { name: "Structural Engineer", value: "Rahul Sharma" },
+                    { name: "Units", value: "48" }
+                ],
+                challenges: [
+                    {
+                        challenge: "Construction delays due to pandemic restrictions.",
+                        solution: "We implemented strict safety protocols and adjusted work schedules to maintain progress."
+                    },
+                    {
+                        challenge: "Client requested upgrades to finishes during construction.",
+                        solution: "We accommodated changes while minimizing cost impacts through value engineering."
+                    },
+                    {
+                        challenge: "Noise restrictions in residential neighborhood.",
+                        solution: "We limited noisy work to daytime hours and used sound barriers where needed."
+                    }
+                ],
+                images: [
+                    "https://i.pinimg.com/736x/00/84/c1/0084c16994d0622c02c60efc120907c5.jpg",
+                    "https://i.pinimg.com/736x/3e/99/ef/3e99efddd91a35b408a114fc50174c37.jpg",
+                    "https://i.pinimg.com/736x/69/91/a0/6991a06d2c0dfea1f6efa46286d65a81.jpg",
+                    "https://i.pinimg.com/736x/8e/18/60/8e1860c8a985a3dbf39f2a299d1b8a42.jpg",
+                    "https://i.pinimg.com/736x/84/5d/d0/845dd0a1c276d160ab25837d029352fc.jpg",
+                    "https://i.pinimg.com/736x/1d/06/14/1d06145d9a1cc00a2b93f9147119acc1.jpg"
+                ],
+                nextProject: "project4",
+                prevProject: "project2"
+            },
+            "project4": {
+                title: "Heritage Restoration",
+                location: "Fort, Mumbai",
+                year: "2020",
+                category: "Renovation",
+                area: "15,000 sq.ft.",
+                client: "Mumbai Heritage Trust",
+                overview: "This sensitive restoration project brought a 19th-century colonial building back to its original glory while updating it for modern use. The building now houses boutique offices and a heritage museum.",
+                details: "Our team worked with conservation architects to preserve original features like teak wood flooring, stained glass windows, and ornate plasterwork. Modern systems were carefully integrated without compromising the building's historic character.",
+                features: [
+                    "Original facade restoration",
+                    "Teak wood flooring refurbishment",
+                    "Stained glass window repair",
+                    "Ornate plasterwork replication",
+                    "Modern MEP systems integration",
+                    "Seismic retrofitting",
+                    "Accessibility upgrades",
+                    "Heritage interpretation center"
+                ],
+                specs: [
+                    { name: "Project Type", value: "Heritage Restoration" },
+                    { name: "Construction Area", value: "15,000 sq.ft." },
+                    { name: "Original Construction", value: "1892" },
+                    { name: "Duration", value: "18 months" },
+                    { name: "Conservation Architect", value: "Heritage Design Collaborative" },
+                    { name: "Structural Engineer", value: "Rahul Sharma" },
+                    { name: "Heritage Grade", value: "II" }
+                ],
+                challenges: [
+                    {
+                        challenge: "Deteriorated structural elements needed reinforcement.",
+                        solution: "We used sympathetic materials and techniques that matched the original construction."
+                    },
+                    {
+                        challenge: "Sourcing matching materials for repairs.",
+                        solution: "We located original material suppliers and used reclaimed materials where possible."
+                    },
+                    {
+                        challenge: "Meeting modern safety codes without altering historic fabric.",
+                        solution: "We creatively concealed fire suppression and other systems in non-historic areas."
+                    }
+                ],
+                images: [
+                    "https://i.pinimg.com/736x/76/f2/9a/76f29a8f5a71dbf154ffd43919bfaf28.jpg",
+                    "https://i.pinimg.com/736x/3e/99/ef/3e99efddd91a35b408a114fc50174c37.jpg",
+                    "https://i.pinimg.com/736x/69/91/a0/6991a06d2c0dfea1f6efa46286d65a81.jpg",
+                    "https://i.pinimg.com/736x/8e/18/60/8e1860c8a985a3dbf39f2a299d1b8a42.jpg",
+                    "https://i.pinimg.com/736x/84/5d/d0/845dd0a1c276d160ab25837d029352fc.jpg",
+                    "https://i.pinimg.com/736x/1d/06/14/1d06145d9a1cc00a2b93f9147119acc1.jpg"
+                ],
+                nextProject: "project5",
+                prevProject: "project3"
+            },
+            "project5": {
+                title: "Penthouse Interior",
+                location: "Worli, Mumbai",
+                year: "2022",
+                category: "Interior",
+                area: "6,500 sq.ft.",
+                client: "Private",
+                overview: "This luxurious penthouse interior combines contemporary design with bespoke craftsmanship. The project involved complete interior design and fit-out of a duplex penthouse with panoramic sea views.",
+                details: "Our design team created a sophisticated palette of natural materials including marble, wood, and brass. Custom furniture and lighting were designed specifically for the space. Smart home technology was seamlessly integrated throughout.",
+                features: [
+                    "Open-plan living areas",
+                    "Custom-designed furniture",
+                    "Bespoke lighting solutions",
+                    "Home automation system",
+                    "Premium material palette",
+                    "Walk-in wardrobes",
+                    "Spa-like bathrooms",
+                    "Private terrace with outdoor kitchen"
+                ],
+                specs: [
+                    { name: "Project Type", value: "Luxury Interior Design" },
+                    { name: "Area", value: "6,500 sq.ft." },
+                    { name: "Duration", value: "9 months" },
+                    { name: "Interior Designer", value: "Neha Kapoor" },
+                    { name: "Materials", value: "Italian marble, American walnut, Brass" },
+                    { name: "Custom Pieces", value: "32" },
+                    { name: "Lighting Fixtures", value: "48" }
+                ],
+                challenges: [
+                    {
+                        challenge: "Client had very specific material preferences that were hard to source.",
+                        solution: "We worked with international suppliers to locate exact matches and alternatives."
+                    },
+                    {
+                        challenge: "Installing large furniture pieces in a high-rise building.",
+                        solution: "We pre-assembled components and used specialized lifting equipment."
+                    },
+                    {
+                        challenge: "Coordinating multiple specialty craftsmen.",
+                        solution: "We developed a detailed schedule and held weekly coordination meetings."
+                    }
+                ],
+                images: [
+                    "https://i.pinimg.com/736x/7b/a4/76/7ba47612d36aea2085872384c58bd684.jpg",
+                    "https://i.pinimg.com/736x/3e/99/ef/3e99efddd91a35b408a114fc50174c37.jpg",
+                    "https://i.pinimg.com/736x/69/91/a0/6991a06d2c0dfea1f6efa46286d65a81.jpg",
+                    "https://i.pinimg.com/736x/8e/18/60/8e1860c8a985a3dbf39f2a299d1b8a42.jpg",
+                    "https://i.pinimg.com/736x/84/5d/d0/845dd0a1c276d160ab25837d029352fc.jpg",
+                    "https://i.pinimg.com/736x/1d/06/14/1d06145d9a1cc00a2b93f9147119acc1.jpg"
+                ],
+                nextProject: "project6",
+                prevProject: "project4"
+            },
+            "project6": {
+                title: "Shopping Mall",
+                location: "Thane, Maharashtra",
+                year: "2021",
+                category: "Commercial",
+                area: "200,000 sq.ft.",
+                client: "Urban Retail Ventures",
+                overview: "This regional shopping mall features 120 retail stores, a food court, multiplex cinema, and family entertainment center. The project was delivered on an accelerated schedule to meet holiday shopping season deadlines.",
+                details: "The mall's design incorporates natural light through a central skylight atrium and features energy-efficient systems throughout. Our team coordinated with dozens of tenant contractors to ensure seamless integration of their build-outs with the shell construction.",
+                features: [
+                    "120 retail stores",
+                    "6-screen multiplex cinema",
+                    "Food court with 20 vendors",
+                    "Family entertainment center",
+                    "Central atrium with skylight",
+                    "Energy-efficient lighting",
+                    "Underground parking for 800 cars",
+                    "Roof-top solar panels"
+                ],
+                specs: [
+                    { name: "Project Type", value: "Retail Mall" },
+                    { name: "Construction Area", value: "200,000 sq.ft." },
+                    { name: "Floors", value: "4 + Basement" },
+                    { name: "Duration", value: "22 months" },
+                    { name: "Architect", value: "Commercial Design Associates" },
+                    { name: "Structural Engineer", value: "Rahul Sharma" },
+                    { name: "Tenant Spaces", value: "120" }
+                ],
+                challenges: [
+                    {
+                        challenge: "Accelerated schedule to meet holiday shopping season.",
+                        solution: "We implemented 24/7 shifts and prefabricated components to speed construction."
+                    },
+                    {
+                        challenge: "Coordinating multiple tenant contractors.",
+                        solution: "We established clear protocols and held daily coordination meetings."
+                    },
+                    {
+                        challenge: "Complex MEP systems serving diverse tenant needs.",
+                        solution: "We designed flexible systems with capacity for future expansion."
+                    }
+                ],
+                images: [
+                    "https://i.pinimg.com/736x/c1/17/f7/c117f7aa5d1e7b98d79c8c949ba38f1c.jpg",
+                    "https://i.pinimg.com/736x/3e/99/ef/3e99efddd91a35b408a114fc50174c37.jpg",
+                    "https://i.pinimg.com/736x/69/91/a0/6991a06d2c0dfea1f6efa46286d65a81.jpg",
+                    "https://i.pinimg.com/736x/8e/18/60/8e1860c8a985a3dbf39f2a299d1b8a42.jpg",
+                    "https://i.pinimg.com/736x/84/5d/d0/845dd0a1c276d160ab25837d029352fc.jpg",
+                    "https://i.pinimg.com/736x/1d/06/14/1d06145d9a1cc00a2b93f9147119acc1.jpg"
+                ],
+                nextProject: "project1",
+                prevProject: "project5"
+            }
+        };
+
+        // Get project ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        let projectId = urlParams.get('id') || 'project1';
+
+        // Load project data
+        function loadProjectData(projectId) {
+            const project = projects[projectId];
+            if (!project) return;
+
+            // Set basic project info
+            document.getElementById('projectTitle').textContent = project.title;
+            document.getElementById('projectLocation').textContent = project.location;
+            document.getElementById('projectYear').textContent = project.year;
+            document.getElementById('projectCategory').textContent = project.category;
+            document.getElementById('projectArea').textContent = project.area;
+            document.getElementById('projectClient').textContent = project.client;
+            document.getElementById('projectOverview').textContent = project.overview;
+            document.getElementById('projectDetails').textContent = project.details;
+
+            // Set hero background image
+            document.getElementById('projectHeroBg').src = project.images[0];
+
+            // Set features
+            const featuresContainer = document.getElementById('projectFeatures');
+            featuresContainer.innerHTML = '';
+            project.features.forEach(feature => {
+                const featureItem = document.createElement('div');
+                featureItem.className = 'feature-item';
+                featureItem.innerHTML = `
+                    <div class="feature-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <span>${feature}</span>
+                `;
+                featuresContainer.appendChild(featureItem);
+            });
+
+            // Set specifications
+            const specsContainer = document.getElementById('projectSpecs');
+            specsContainer.innerHTML = '';
+            project.specs.forEach(spec => {
+                const specItem = document.createElement('div');
+                specItem.className = 'feature-item';
+                specItem.innerHTML = `
+                    <div class="feature-icon">
+                        <i class="fas fa-circle"></i>
+                    </div>
+                    <div>
+                        <strong>${spec.name}:</strong> ${spec.value}
+                    </div>
+                `;
+                specsContainer.appendChild(specItem);
+            });
+
+            // Set challenges
+            const challengesContainer = document.getElementById('projectChallenges');
+            challengesContainer.innerHTML = '';
+            project.challenges.forEach(challenge => {
+                const challengeItem = document.createElement('div');
+                challengeItem.className = 'feature-item';
+                challengeItem.style.alignItems = 'flex-start';
+                challengeItem.style.marginBottom = '1.5rem';
+                challengeItem.innerHTML = `
+                    <div class="feature-icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <div>
+                        <p><strong>Challenge:</strong> ${challenge.challenge}</p>
+                        <p><strong>Solution:</strong> ${challenge.solution}</p>
+                    </div>
+                `;
+                challengesContainer.appendChild(challengeItem);
+            });
+
+            // Set gallery images
+            const galleryContainer = document.getElementById('projectGallery');
+            galleryContainer.innerHTML = '';
+            project.images.forEach(image => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `
+                    <img src="${image}" alt="${project.title}">
+                `;
+                galleryContainer.appendChild(galleryItem);
+            });
+
+            // Set next and previous project links
+            if (project.nextProject) {
+                const nextProject = projects[project.nextProject];
+                document.getElementById('nextProject').href = `project.html?id=${project.nextProject}`;
+                document.getElementById('nextProjectTitle').textContent = nextProject.title;
+            }
+
+            if (project.prevProject) {
+                const prevProject = projects[project.prevProject];
+                document.getElementById('prevProject').href = `project.html?id=${project.prevProject}`;
+                document.getElementById('prevProjectTitle').textContent = prevProject.title;
+            }
+
+            // Update document title
+            document.title = `${project.title} | Chatrapati Builders`;
+        }
+
+        // Initialize project data
+        loadProjectData(projectId);
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Sticky Header
+        const header = document.querySelector('.header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Back to Top Button
+        const backToTopBtn = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
