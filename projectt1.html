@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Plots at Malabar Hills | Chatrapati Builders</title>
+    <meta name="description" content="Premium residential plots available in Malabar Hills with 70% FAR, 100% clear title, and all modern amenities.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        /* Project-specific styles */
+        .project-hero {
+            height: 60vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.pinimg.com/736x/e6/cb/c6/e6cbc604721f139f9067dfd63ceaf886.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .project-details {
+            padding: 4rem 0;
+        }
+        
+        .detail-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .detail-card h3 {
+            color: #e67e22;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .detail-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #e67e22, #d4af37);
+        }
+        
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .detail-item {
+            margin-bottom: 1rem;
+        }
+        
+        .detail-item strong {
+            display: block;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+        
+        .detail-item span {
+            color: #7f8c8d;
+        }
+        
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        
+        .amenity-icon {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(230, 126, 34, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: #e67e22;
+        }
+        
+        .gallery {
+            margin: 3rem 0;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .location-map {
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 3rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .location-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .visualization {
+            background-color: #f9f9f9;
+            padding: 3rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .visualization h3 {
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+        
+        .visualization-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .visualization-item {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+        }
+        
+        .visualization-item img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .visualization-item p {
+            margin-top: 1rem;
+            color: #7f8c8d;
+        }
+        
+        .contact-cta {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            color: white;
+            padding: 3rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .contact-cta h3 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-cta .btn {
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">
+                    <img src="../Chatrapati_Builders_logo.jpg" alt="Chatrapati Builders Logo">
+                    <span class="logo-text">Chatrapati <span>Builders</span></span>
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#services">Services</a></li>
+                    <li><a href="../index.html#portfolio">Portfolio</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="container">
+            <h1>Luxury Plots at Malabar Hills</h1>
+            <p>Premium residential plots with panoramic city views and world-class amenities</p>
+        </div>
+    </section>
+
+    <!-- Project Details -->
+    <section class="project-details">
+        <div class="container">
+            <!-- Legal & Ownership -->
+            <div class="detail-card">
+                <h3>Legal & Ownership Details</h3>
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <strong>Title Status</strong>
+                        <span>Marketable & Clear (Free from liens/encumbrances)</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Ownership Type</strong>
+                        <span>Freehold</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>RERA Registration</strong>
+                        <span>MH/RERA/1234/2023 (<a href="https://maharera.mahaonline.gov.in" target="_blank">Verify</a>)</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Encumbrance Certificate</strong>
+                        <span>Available for review</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Mother Deed</strong>
+                        <span>Available for verification</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Approved Layout Plan</strong>
+                        <span><a href="#" target="_blank">View PDF</a></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Land Specifications -->
+            <div class="detail-card">
+                <h3>Land Specifications</h3>
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <strong>Plot Numbers</strong>
+                        <span>A1 to A12, B1 to B8</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Survey Numbers</strong>
+                        <span>123/4, 123/5</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Available Plot Sizes</strong>
+                        <span>5000 sq.ft. to 15000 sq.ft.</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Facing Direction</strong>
+                        <span>North-East (Most plots)</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Topography</strong>
+                        <span>Gently sloping with rock base</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Zoning</strong>
+                        <span>Residential (R2)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Development Potential -->
+            <div class="detail-card">
+                <h3>Development Potential</h3>
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <strong>Floor Space Index (FSI)</strong>
+                        <span>1.5</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Ground Coverage</strong>
+                        <span>50%</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Height Restrictions</strong>
+                        <span>70 feet (G+4)</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Setback Requirements</strong>
+                        <span>Front: 15ft, Sides: 10ft, Rear: 15ft</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Parking Requirements</strong>
+                        <span>2 ECS per dwelling unit</span>
+                    </div>
+                </div>
+                
+                <div class="visualization">
+                    <h3>Build Potential Visualizations</h3>
+                    <div class="visualization-container">
+                        <div class="visualization-item">
+                            <img src="https://i.pinimg.com/736x/3a/7d/8e/3a7d8e0c0c3e3e3e3e3e3e3e3e3e3e3.jpg" alt="Bungalow Design">
+                            <p>5000 sq.ft. plot - 3BHK Bungalow</p>
+                        </div>
+                        <div class="visualization-item">
+                            <img src="https://i.pinimg.com/736x/4a/7d/8e/4a7d8e0c0c3e3e3e3e3e3e3e3e3e3e3.jpg" alt="Villa Design">
+                            <p>7500 sq.ft. plot - 4BHK Villa</p>
+                        </div>
+                        <div class="visualization-item">
+                            <img src="https://i.pinimg.com/736x/5a/7d/8e/5a7d8e0c0c3e3e3e3e3e3e3e3e3e3e3.jpg" alt="Mansion Design">
+                            <p>15000 sq.ft. plot - 6BHK Mansion</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Infrastructure & Amenities -->
+            <div class="detail-card">
+                <h3>Infrastructure & Amenities</h3>
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <strong>Roads</strong>
+                        <span>30ft wide concrete internal roads</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Water Supply</strong>
+                        <span>Municipal connection + Borewell backup</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Electricity</strong>
+                        <span>Underground cabling, 100KVA transformer</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Sewerage</strong>
+                        <span>Underground drainage with STP</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Stormwater Drainage</strong>
+                        <span>Comprehensive network</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Internet Connectivity</strong>
+                        <span>Fiber optic ducts laid</span>
+                    </div>
+                </div>
+                
+                <h4 style="margin-top: 2rem; margin-bottom: 1rem;">Project Amenities</h4>
+                <div class="amenities-grid">
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <span>Landscaped Parks</span>
+                    </div>
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <span>24/7 Security</span>
+                    </div>
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <i class="fas fa-swimming-pool"></i>
+                        </div>
+                        <span>Clubhouse with Pool</span>
+                    </div>
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <i class="fas fa-road"></i>
+                        </div>
+                        <span>Paved Walkways</span>
+                    </div>
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span>Street Lighting</span>
+                    </div>
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <i class="fas fa-wall"></i>
+                        </div>
+                        <span>Perimeter Wall</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pricing & Payment -->
+            <div class="detail-card">
+                <h3>Pricing & Payment Plans</h3>
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <strong>Price Range</strong>
+                        <span>₹15,000 - ₹20,000 per sq.ft.</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Booking Amount</strong>
+                        <span>10% of plot value</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Payment Plans</strong>
+                        <span>Flexible 12-24 month plans available</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Included Charges</strong>
+                        <span>Registration, Stamp Duty (Extra)</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Possession Timeline</strong>
+                        <span>Immediate (Plot ready for construction)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Location & Connectivity -->
+            <div class="detail-card">
+                <h3>Location & Connectivity</h3>
+                <p style="margin-bottom: 1.5rem;">Situated in the prestigious Malabar Hills area with excellent connectivity to key locations:</p>
+                
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <strong>Address</strong>
+                        <span>Plot No. A1-A12, B1-B8, Malabar Hills, Mumbai - 400006</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Landmarks</strong>
+                        <span>1km from Hanging Gardens, 2km from Kamala Nehru Park</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Distance from City Center</strong>
+                        <span>5km</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Nearest Metro Station</strong>
+                        <span>Charni Road (3km)</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Schools Nearby</strong>
+                        <span>Cathedral School (2km), JB Petit School (3km)</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Hospitals Nearby</strong>
+                        <span>Breach Candy Hospital (4km), Jaslok Hospital (5km)</span>
+                    </div>
+                </div>
+                
+                <div class="location-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.651944256721!2d72.7923143153784!3d18.963626987163975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce6e7935f3a9%3A0x6b4d6a3b3e3e3e3e!2sMalabar%20Hill%2C%20Mumbai%2C%20Maharashtra%20400006!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            
+            <!-- Gallery -->
+            <div class="detail-card">
+                <h3>Project Gallery</h3>
+                <div class="gallery">
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="https://i.pinimg.com/736x/e6/cb/c6/e6cbc604721f139f9067dfd63ceaf886.jpg" alt="Aerial View">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://i.pinimg.com/736x/3a/7d/8e/3a7d8e0c0c3e3e3e3e3e3e3e3e3e3e3.jpg" alt="Site Plan">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://i.pinimg.com/736x/4a/7d/8e/4a7d8e0c0c3e3e3e3e3e3e3e3e3e3e3.jpg" alt="Roads">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://i.pinimg.com/736x/5a/7d/8e/5a7d8e0c0c3e3e3e3e3e3e3e3e3e3e3.jpg" alt="Park">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://i.pinimg.com/736x/6a/7d/8e/6a7d8e0c0c3e3e3e3e3e3e3e3e3e3e3.jpg" alt="Clubhouse">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://i.pinimg.com/736x/7a/7d/8e/7a7d8e0c0c3e3e3e3e3e3e3e3e3e3e3.jpg" alt="Viewpoint">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonials -->
+            <div class="detail-card">
+                <h3>What Our Clients Say</h3>
+                <div class="testimonials" style="margin-top: 2rem;">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="testimonial-author">
+                                <h4>Rajesh Khanna</h4>
+                                <p class="testimonial-role">Plot Owner (A5)</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">The transparency in documentation and quality of infrastructure at Malabar Hills plots is exceptional. Chatrapati Builders delivered everything as promised.</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ -->
+            <div class="detail-card">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq" style="margin-top: 2rem;">
+                    <div class="faq-item">
+                        <h4>Q: What is the process for plot registration?</h4>
+                        <p>A: Our legal team handles all registration formalities. We provide complete assistance for stamp duty payment, document preparation, and registration at the sub-registrar office.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Q: Are there any restrictions on construction?</h4>
+                        <p>A: Construction must adhere to approved FSI (1.5), ground coverage (50%), and height restrictions (70ft). We provide standard approved plans that meet all regulations.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Q: What about maintenance charges?</h4>
+                        <p>A: There's an annual maintenance charge of ₹15/sq.ft. for upkeep of common areas, security, and amenities.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Q: Can I visit the site?</h4>
+                        <p>A: Yes, site visits are available by appointment. Contact our sales office to schedule a visit with our representative.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact CTA -->
+            <div class="contact-cta">
+                <h3>Ready to Own Your Dream Plot?</h3>
+                <p>Contact our sales team today for site visits, pricing details, and personalized consultation.</p>
+                <a href="../index.html#contact" class="btn btn-secondary">Contact Sales Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <p>Chatrapati Builders & Developers is a premier construction company dedicated to delivering exceptional quality and innovative design solutions since 2003.</p>
+                    <div class="footer-social">
+                        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook"></a>
+                        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+                        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="LinkedIn"></a>
+                        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../index.html#about">About Us</a></li>
+                        <li><a href="../index.html#services">Services</a></li>
+                        <li><a href="../index.html#portfolio">Portfolio</a></li>
+                        <li><a href="../index.html#team">Our Team</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Residential Plots</a></li>
+                        <li><a href="#">Commercial Plots</a></li>
+                        <li><a href="#">Farm Lands</a></li>
+                        <li><a href="#">Layout Development</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Details</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Construction Avenue, Mumbai, Maharashtra 400001</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 22 3456 7890</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@chatrapatibuilders.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Made By RR Industryy</p>
+                <p>&copy; 2023 Chatrapati Builders & Developers. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+</html>
