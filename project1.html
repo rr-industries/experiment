@@ -774,7 +774,7 @@
                                 <i class="fas fa-home"></i>
                             </div>
                             <div>
-                                <h3>Turnkey Home Construction</h3>
+                                <h3>Tu Home Construction</h3>
                                 <p>We handle everything from foundation to finishing, delivering your dream home ready to move in.</p>
                             </div>
                         </div>
@@ -1115,13 +1115,13 @@
             // Set next and previous project links
             if (project.nextProject) {
                 const nextProject = projects[project.nextProject];
-                document.getElementById('nextProject').href = `project.html?id=${project.nextProject}`;
+                document.getElementById('nextProject').href = `./project2{project.nextProject}`;
                 document.getElementById('nextProjectTitle').textContent = nextProject.title;
             }
 
             if (project.prevProject) {
                 const prevProject = projects[project.prevProject];
-                document.getElementById('prevProject').href = `project.html?id=${project.prevProject}`;
+                document.getElementById('prevProject').href = `./project6{project.prevProject}`;
                 document.getElementById('prevProjectTitle').textContent = prevProject.title;
             }
 
