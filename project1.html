@@ -1115,13 +1115,13 @@
             // Set next and previous project links
             if (project.nextProject) {
                 const nextProject = projects[project.nextProject];
-                document.getElementById('nextProject').href = `./project2{project.nextProject}`;
+                document.getElementById('nextProject').href = `./project2`;
                 document.getElementById('nextProjectTitle').textContent = nextProject.title;
             }
 
             if (project.prevProject) {
                 const prevProject = projects[project.prevProject];
-                document.getElementById('prevProject').href = `./project6{project.prevProject}`;
+                document.getElementById('prevProject').href = `./project6`;
                 document.getElementById('prevProjectTitle').textContent = prevProject.title;
             }
 
